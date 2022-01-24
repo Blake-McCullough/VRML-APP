@@ -1,3 +1,4 @@
+import 'package:VRML_APP/comingsoon.dart';
 import 'package:VRML_APP/leaderboard/leaderboard.dart';
 import 'package:VRML_APP/profile/profile.dart';
 import 'package:VRML_APP/search/search.dart';
@@ -146,7 +147,7 @@ class _MainScreen extends State<MainScreen> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  Leaderboard()),
+                                                  ComingSoon()),
                                         );
                                       },
                                       icon: Icon(Icons

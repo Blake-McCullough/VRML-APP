@@ -1,3 +1,4 @@
+import 'package:VRML_APP/comingsoon.dart';
 import 'package:VRML_APP/globalvariables.dart';
 import 'package:VRML_APP/leaderboard/leaderboard.dart';
 import 'package:VRML_APP/profile/profile.dart';
@@ -136,7 +137,7 @@ class _Search extends State<Search> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  Leaderboard()),
+                                                  ComingSoon()),
                                         );
                                       },
                                       icon: Icon(Icons
