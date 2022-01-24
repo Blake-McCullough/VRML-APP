@@ -7,12 +7,6 @@ import 'package:VRML_APP/search/team/teamsearch.dart';
 import 'package:VRML_APP/settings/settings.dart';
 import 'package:flutter/material.dart';
 
-var teamID;
-var searcharea;
-String? userinput;
-//CREATES THE SearchResults CRAP
-Map<String, dynamic> x = {};
-
 // Define a custom Form widget.
 class Search extends StatefulWidget {
   const Search({

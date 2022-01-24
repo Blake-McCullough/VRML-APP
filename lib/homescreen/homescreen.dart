@@ -147,7 +147,7 @@ class _MainScreen extends State<MainScreen> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  ComingSoon()),
+                                                  Leaderboard()),
                                         );
                                       },
                                       icon: Icon(Icons

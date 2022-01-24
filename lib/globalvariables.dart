@@ -17,3 +17,6 @@ var myteamsmap;
 var myteamslist;
 var teamSearch;
 var playerID;
+var teamID;
+var searcharea;
+String? userinput;

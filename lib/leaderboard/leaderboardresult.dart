@@ -1,9 +1,12 @@
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+
+import 'package:VRML_APP/globalvariables.dart';
+import 'package:VRML_APP/homescreen/homescreen.dart';
 import 'package:VRML_APP/leaderboard/leaderboardhttp.dart';
 import 'package:VRML_APP/search/search.dart';
 import 'package:VRML_APP/search/team/teamidresult.dart';
-import 'package:VRML_APP/globalvariables.dart';
-
-import 'package:flutter/material.dart';
 
 //CREATES THE SearchResults CRAP
 class LeaderboardResults extends StatefulWidget {
@@ -16,96 +19,144 @@ class LeaderboardResults extends StatefulWidget {
 }
 
 class _LeaderboardResultsState extends State<LeaderboardResults> {
-  Future<List<Map<String, dynamic>>> parJson = getLeaderboards();
+  Future<String> parJson = getLeaderboards();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Leaderboard for $searcharea'),
+      ),
       backgroundColor: colourscheme,
-      body: FutureBuilder<List<Map<String, dynamic>>>(
+      body: FutureBuilder<String>(
         future: parJson,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return ListView(
-              physics: BouncingScrollPhysics(),
-              children: [
-                Center(
-                    child: Text(
-                  'Leaderboard for ' + searcharea,
-                  style: TextStyle(
-                    color: textcolour,
-                  ),
-                )),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text(
-                      "BACKKKKKKKK",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
-                for (var i in snapshot.data!)
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.all(20),
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: NetworkImage(host + i['image']),
-                                fit: BoxFit.fill),
-                          ),
-                        ),
-                        Text(
-                          i["rank"],
-                          style: TextStyle(
-                            color: textcolour,
-                          ),
-                        ),
-                        Text(
-                          i["name"],
-                          style: TextStyle(
-                            color: textcolour,
-                          ),
-                        ),
-                        Center(
-                          child: ElevatedButton(
-                            onPressed: () {
-                              setState(() {
-                                teamID = i["id"];
-                              });
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const TeamResults()),
-                              );
-                            },
-                            child: Text(
-                              "Go to team Info",
-                              style: TextStyle(color: Colors.white),
+            var newData = json.decode(snapshot.data.toString());
+
+            return ListView.builder(
+                itemBuilder: (BuildContext context, int index) {
+              return Card(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      top: 6, bottom: 16, left: 16, right: 16),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Column(
+                              children: <Widget>[
+                                Row(children: <Widget>[
+                                  (Container(
+                                    margin: EdgeInsets.all(20),
+                                    width: 40,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                          image: NetworkImage(
+                                              host + newData[index]['logo']),
+                                          fit: BoxFit.fill),
+                                    ),
+                                  )),
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (_) => MainScreen()));
+                                    },
+                                    child: Text(
+                                      newData[index]['rank'].toString(),
+                                      //'Note Title',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 22),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10.0,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (_) => MainScreen()));
+                                    },
+                                    child: Text(
+                                      newData[index]['name'].toString(),
+                                      //'Note Title',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 22),
+                                    ),
+                                  ),
+                                ]),
+                                Column(children: <Widget>[
+                                  Row(children: <Widget>[
+                                    SizedBox(
+                                      width: 65.0,
+                                    ),
+                                    Text(
+                                      "GP: " + newData[index]['gp'].toString(),
+                                      //'Note Text',
+                                      style: TextStyle(
+                                          color: Colors.grey.shade600),
+                                    ),
+                                    SizedBox(
+                                      width: 10.0,
+                                    ),
+                                    Text(
+                                      "W: " + newData[index]['w'].toString(),
+                                      //'Note Text',
+                                      style: TextStyle(
+                                          color: Colors.grey.shade600),
+                                    ),
+                                    SizedBox(
+                                      width: 10.0,
+                                    ),
+                                    Text(
+                                      "T: " + newData[index]['t'].toString(),
+                                      //'Note Text',
+                                      style: TextStyle(
+                                          color: Colors.grey.shade600),
+                                    ),
+                                    SizedBox(
+                                      width: 10.0,
+                                    ),
+                                    Text(
+                                      "L: " + newData[index]['l'].toString(),
+                                      //'Note Text',
+                                      style: TextStyle(
+                                          color: Colors.grey.shade600),
+                                    ),
+                                  ]),
+                                ]),
+                              ],
                             ),
-                          ),
+                            //SizedBox(width: 20),
+                          ],
                         ),
                       ]),
-              ],
-            );
+                ),
+              );
+            });
           } else if (snapshot.hasError) {
             print(snapshot.stackTrace);
             print(snapshot.error.toString());
+
             return Center(
-              child: Text(
-                'an error occured :awkward:',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            );
+                child: ElevatedButton(
+                    child: Text('An error occured :awkward:'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MainScreen()),
+                      );
+                    }));
           } else {
             return Center(
               child: CircularProgressIndicator(),
