@@ -13,13 +13,6 @@ class ComingSoon extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text("COMING SOON!"),
-              Center(
-                child: ElevatedButton(
-                    child: Text('Back'),
-                    onPressed: () {
-                      Navigator.of(context).popUntil((route) => route.isFirst);
-                    }),
-              ),
             ],
           ),
         ),

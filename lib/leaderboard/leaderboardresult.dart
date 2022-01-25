@@ -37,111 +37,44 @@ class _LeaderboardResultsState extends State<LeaderboardResults> {
             return ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
               return Card(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      top: 6, bottom: 16, left: 16, right: 16),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Column(
-                              children: <Widget>[
-                                Row(children: <Widget>[
-                                  (Container(
-                                    margin: EdgeInsets.all(20),
-                                    width: 40,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      image: DecorationImage(
-                                          image: NetworkImage(
-                                              host + newData[index]['logo']),
-                                          fit: BoxFit.fill),
-                                    ),
-                                  )),
-                                  InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (_) => MainScreen()));
-                                    },
-                                    child: Text(
-                                      newData[index]['rank'].toString(),
-                                      //'Note Title',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 22),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 10.0,
-                                  ),
-                                  InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (_) => MainScreen()));
-                                    },
-                                    child: Text(
-                                      newData[index]['name'].toString(),
-                                      //'Note Title',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 22),
-                                    ),
-                                  ),
-                                ]),
-                                Column(children: <Widget>[
-                                  Row(children: <Widget>[
-                                    SizedBox(
-                                      width: 65.0,
-                                    ),
-                                    Text(
-                                      "GP: " + newData[index]['gp'].toString(),
-                                      //'Note Text',
-                                      style: TextStyle(
-                                          color: Colors.grey.shade600),
-                                    ),
-                                    SizedBox(
-                                      width: 10.0,
-                                    ),
-                                    Text(
-                                      "W: " + newData[index]['w'].toString(),
-                                      //'Note Text',
-                                      style: TextStyle(
-                                          color: Colors.grey.shade600),
-                                    ),
-                                    SizedBox(
-                                      width: 10.0,
-                                    ),
-                                    Text(
-                                      "T: " + newData[index]['t'].toString(),
-                                      //'Note Text',
-                                      style: TextStyle(
-                                          color: Colors.grey.shade600),
-                                    ),
-                                    SizedBox(
-                                      width: 10.0,
-                                    ),
-                                    Text(
-                                      "L: " + newData[index]['l'].toString(),
-                                      //'Note Text',
-                                      style: TextStyle(
-                                          color: Colors.grey.shade600),
-                                    ),
-                                  ]),
-                                ]),
-                              ],
-                            ),
-                            //SizedBox(width: 20),
-                          ],
-                        ),
-                      ]),
+                child: ListTile(
+                  leading: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          image: NetworkImage(host + newData[index]['logo']),
+                          fit: BoxFit.fill),
+                    ),
+                  ),
+                  title: Text(newData[index]['rank'].toString() +
+                      ") " +
+                      newData[index]['name'].toString()),
+                  subtitle: Text(
+                    "GP: " +
+                        newData[index]['gp'].toString() +
+                        " W: " +
+                        newData[index]['w'].toString() +
+                        " T: " +
+                        newData[index]['t'].toString() +
+                        " L: " +
+                        newData[index]['l'].toString(),
+                  ),
+                  trailing: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                TeamResults(teamID: newData[index]['id'])),
+                      );
+                    },
+                    icon: Icon(Icons.more_vert),
+                  ),
                 ),
+
+                //SizedBox(width: 20),
               );
             });
           } else if (snapshot.hasError) {

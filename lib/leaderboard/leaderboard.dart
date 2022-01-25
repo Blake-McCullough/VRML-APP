@@ -20,12 +20,19 @@ class _Leaderboard extends State<Leaderboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: Text('Leaderboard'),
+          automaticallyImplyLeading: false,
+          backgroundColor: appbarcolor),
       backgroundColor: colourscheme,
       body: FutureBuilder<Map<String, dynamic>>(
         builder: (context, snapshot) {
           return ListView(
             physics: BouncingScrollPhysics(),
             children: [
+              SizedBox(
+                height: 50.0,
+              ),
               Center(
                 child: ElevatedButton(
                   onPressed: () {
@@ -41,10 +48,18 @@ class _Leaderboard extends State<Leaderboard> {
                     );
                   },
                   child: Text(
-                    "Onward",
-                    style: TextStyle(color: Colors.white),
+                    'Onward',
+                    style: TextStyle(color: textcolour, fontSize: 20),
                   ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      fixedSize: const Size(200, 70),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
                 ),
+              ),
+              SizedBox(
+                height: 50.0,
               ),
               Center(
                 child: ElevatedButton(
@@ -61,10 +76,18 @@ class _Leaderboard extends State<Leaderboard> {
                     );
                   },
                   child: Text(
-                    "Echo Arena",
-                    style: TextStyle(color: Colors.white),
+                    'Echo Arena',
+                    style: TextStyle(color: textcolour, fontSize: 20),
                   ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      fixedSize: const Size(200, 70),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
                 ),
+              ),
+              SizedBox(
+                height: 50.0,
               ),
               Center(
                 child: ElevatedButton(
@@ -81,10 +104,18 @@ class _Leaderboard extends State<Leaderboard> {
                     );
                   },
                   child: Text(
-                    "Pavlov",
-                    style: TextStyle(color: Colors.white),
+                    'Pavlov',
+                    style: TextStyle(color: textcolour, fontSize: 20),
                   ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      fixedSize: const Size(200, 70),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
                 ),
+              ),
+              SizedBox(
+                height: 50.0,
               ),
               Center(
                 child: ElevatedButton(
@@ -101,13 +132,15 @@ class _Leaderboard extends State<Leaderboard> {
                     );
                   },
                   child: Text(
-                    "SnapShot",
-                    style: TextStyle(color: Colors.white),
+                    'SnapShot',
+                    style: TextStyle(color: textcolour, fontSize: 20),
                   ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      fixedSize: const Size(200, 70),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
                 ),
-              ),
-              SizedBox(
-                height: 60.0,
               ),
             ],
           );

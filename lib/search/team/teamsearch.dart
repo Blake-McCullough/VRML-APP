@@ -33,24 +33,16 @@ class _Searchteams extends State<Searchteams> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Team Search'), backgroundColor: appbarcolor),
       backgroundColor: colourscheme,
       body: Container(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(
-                height: 60.0,
-              ),
-              Text(
-                'Search Teams',
-                style: TextStyle(
-                  color: textcolour,
-                ),
-              ),
               Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 30.0, vertical: 20.0),
+                    horizontal: 30.0, vertical: 10.0),
                 child: TextField(
                   decoration: InputDecoration(
                     hintText: "Do not leave me empty!",
@@ -60,11 +52,14 @@ class _Searchteams extends State<Searchteams> {
               ),
               ElevatedButton(
                   child: Text(
-                    'Search EchoArena',
-                    style: TextStyle(
-                      color: textcolour,
-                    ),
+                    'Search Echo Arena',
+                    style: TextStyle(color: textcolour, fontSize: 20),
                   ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      fixedSize: const Size(210, 70),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
                     if (myController.text.isNotEmpty) {
                       setState(() {
@@ -78,8 +73,19 @@ class _Searchteams extends State<Searchteams> {
                       );
                     }
                   }),
+              SizedBox(
+                height: 50.0,
+              ),
               ElevatedButton(
-                  child: Text('Search Onward'),
+                  child: Text(
+                    'Search Onward',
+                    style: TextStyle(color: textcolour, fontSize: 20),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      fixedSize: const Size(210, 70),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
                     if (myController.text.isNotEmpty) {
                       setState(() {
@@ -93,8 +99,19 @@ class _Searchteams extends State<Searchteams> {
                       );
                     }
                   }),
+              SizedBox(
+                height: 50.0,
+              ),
               ElevatedButton(
-                  child: Text('Search Snapshot'),
+                  child: Text(
+                    'Search Snapshot',
+                    style: TextStyle(color: textcolour, fontSize: 20),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      fixedSize: const Size(210, 70),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
                     if (myController.text.isNotEmpty) {
                       setState(() {
@@ -108,8 +125,19 @@ class _Searchteams extends State<Searchteams> {
                       );
                     }
                   }),
+              SizedBox(
+                height: 50.0,
+              ),
               ElevatedButton(
-                  child: Text('Search Pavlov'),
+                  child: Text(
+                    'Search Pavlov',
+                    style: TextStyle(color: textcolour, fontSize: 20),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      fixedSize: const Size(210, 70),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
                     setState(() {
                       searcharea = 'pavlov';
@@ -121,93 +149,6 @@ class _Searchteams extends State<Searchteams> {
                           builder: (context) => const TeamSearchResults()),
                     );
                   }),
-              ElevatedButton(
-                  child: Text('Back'),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  }),
-              new Expanded(
-                  child: new Align(
-                      alignment: Alignment.bottomCenter,
-                      child: new Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: <Widget>[
-                                Row(children: <Widget>[
-                                  Center(
-                                    child: ElevatedButton.icon(
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => Profile()),
-                                        );
-                                      },
-                                      icon: Icon(Icons
-                                          .person), //icon data for elevated button
-                                      label: Text(""), //label text
-                                    ),
-                                  ),
-                                  Center(
-                                    child: ElevatedButton(
-                                        child: Text('Search'),
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const Search()),
-                                          );
-                                        }),
-                                  ),
-                                  Center(
-                                    child: ElevatedButton.icon(
-                                      onPressed: () {
-                                        Navigator.of(context)
-                                            .popUntil((route) => route.isFirst);
-                                      },
-                                      icon: Icon(Icons
-                                          .home), //icon data for elevated button
-                                      label: Text(""), //label text
-                                    ),
-                                  ),
-                                  Center(
-                                    child: ElevatedButton.icon(
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ComingSoon()),
-                                        );
-                                      },
-                                      icon: Icon(Icons
-                                          .leaderboard), //icon data for elevated button
-                                      label: Text(""), //label text
-                                    ),
-                                  ),
-                                  Center(
-                                    child: ElevatedButton.icon(
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => Settings()),
-                                        );
-                                      },
-                                      icon: Icon(Icons
-                                          .settings), //icon data for elevated button
-                                      label: Text(""), //label text
-                                    ),
-                                  ),
-                                ]),
-                              ]),
-                        ],
-                      )))
             ],
           ),
         ),

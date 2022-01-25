@@ -9,17 +9,18 @@ import 'package:flutter_web_auth/flutter_web_auth.dart';
 
 import 'package:http/http.dart' as http;
 
-String? token;
+var token;
 final _client = http.Client();
 var returnedresult;
 void main() {
   runApp(
     MaterialApp(
-      home: MainScreen(),
+      home: PersistantBar(),
     ),
   );
 }
 
+var tokencode;
 var hashvalue;
 var code;
 var codeverifier;
@@ -62,6 +63,7 @@ class _MyAppState extends State<MyApp> {
       print(code);
       setState(() {
         _status = 'Success!';
+
         code = code;
       });
 
@@ -119,10 +121,8 @@ class _MyAppState extends State<MyApp> {
                   child: Text('Back'),
                   onPressed: () {
                     print(code);
-                    Navigator.push(
+                    Navigator.pop(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => const MainScreen()),
                     );
                   }),
             ],

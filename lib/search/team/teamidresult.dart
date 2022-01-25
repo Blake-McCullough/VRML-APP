@@ -4,8 +4,10 @@ import 'package:VRML_APP/globalvariables.dart';
 import 'package:flutter/material.dart';
 
 class TeamResults extends StatefulWidget {
+  final String teamID;
   const TeamResults({
     Key? key,
+    required this.teamID,
   }) : super(key: key);
 
   @override
@@ -13,7 +15,7 @@ class TeamResults extends StatefulWidget {
 }
 
 class _TeamResultsState extends State<TeamResults> {
-  Future<Map<String, dynamic>> parJson = getTeamSearchID();
+  late Future<Map<String, dynamic>> parJson = getTeamSearchID(widget.teamID);
 
   @override
   Widget build(BuildContext context) {

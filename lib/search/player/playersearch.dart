@@ -35,6 +35,8 @@ class _Searchplayers extends State<Searchplayers> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar:
+          AppBar(title: Text('Player Search'), backgroundColor: appbarcolor),
       backgroundColor: colourscheme,
       body: Container(
         child: Center(
@@ -123,94 +125,6 @@ class _Searchplayers extends State<Searchplayers> {
                           builder: (context) => const PlayerSearchResults()),
                     );
                   }),
-              ElevatedButton(
-                  child: Text('Back'),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  }),
-              new Expanded(
-                  child: new Align(
-                      alignment: Alignment.bottomCenter,
-                      child: new Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: <Widget>[
-                                Row(children: <Widget>[
-                                  Center(
-                                    child: ElevatedButton.icon(
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => Profile()),
-                                        );
-                                      },
-                                      icon: Icon(Icons
-                                          .person), //icon data for elevated button
-                                      label: Text(""), //label text
-                                    ),
-                                  ),
-                                  Center(
-                                    child: ElevatedButton(
-                                        child: Text('Search'),
-                                        onPressed: () {
-                                          print(code);
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const Search()),
-                                          );
-                                        }),
-                                  ),
-                                  Center(
-                                    child: ElevatedButton.icon(
-                                      onPressed: () {
-                                        Navigator.of(context)
-                                            .popUntil((route) => route.isFirst);
-                                      },
-                                      icon: Icon(Icons
-                                          .home), //icon data for elevated button
-                                      label: Text(""), //label text
-                                    ),
-                                  ),
-                                  Center(
-                                    child: ElevatedButton.icon(
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  Leaderboard()),
-                                        );
-                                      },
-                                      icon: Icon(Icons
-                                          .leaderboard), //icon data for elevated button
-                                      label: Text(""), //label text
-                                    ),
-                                  ),
-                                  Center(
-                                    child: ElevatedButton.icon(
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => Settings()),
-                                        );
-                                      },
-                                      icon: Icon(Icons
-                                          .settings), //icon data for elevated button
-                                      label: Text(""), //label text
-                                    ),
-                                  ),
-                                ]),
-                              ]),
-                        ],
-                      )))
             ],
           ),
         ),

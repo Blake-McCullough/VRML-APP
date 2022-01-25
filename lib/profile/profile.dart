@@ -1,3 +1,4 @@
+import 'package:VRML_APP/comingsoon.dart';
 import 'package:VRML_APP/main.dart';
 import 'package:VRML_APP/profile/userhttp.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Profile'), backgroundColor: appbarcolor),
       backgroundColor: colourscheme,
       body: FutureBuilder<Map<String, dynamic>>(
         future: parJson,
@@ -136,17 +138,16 @@ class _ProfileState extends State<Profile> {
           } else if (snapshot.hasError) {
             print(snapshot.stackTrace);
             print(snapshot.error.toString());
-
-            return Center(
-                child: ElevatedButton(
-                    child: Text(
-                        'Signin(This does not work at the current time YOU BABOON)'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MyApp()),
-                      );
-                    }));
+            return ComingSoon();
+            //return Center(
+            //  child: ElevatedButton(
+            //    child: Text('Signin'),
+            //  onPressed: () {
+            //  Navigator.push(
+            //  context,
+            //MaterialPageRoute(builder: (context) => MyApp()),
+            //);
+            //}));
           } else {
             return Center(
               child: CircularProgressIndicator(),

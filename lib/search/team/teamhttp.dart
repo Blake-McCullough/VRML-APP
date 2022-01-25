@@ -24,7 +24,7 @@ Future<List<Map<String, dynamic>>> getTeamSearch() async {
   return decodedResponse;
 }
 
-Future<Map<String, dynamic>> getTeamSearchID() async {
+Future<Map<String, dynamic>> getTeamSearchID(String teamID) async {
   //Gets the json for the users info
   String urlsearch = 'https://api.vrmasterleague.com/Teams/' + teamID;
 
