@@ -29,7 +29,7 @@ class _PersistantBar extends State<PersistantBar> {
   }
 
   PersistentTabController _controller =
-      PersistentTabController(initialIndex: 1);
+      PersistentTabController(initialIndex: 2);
   List<Widget> _buildScreens() {
     return [Profile(), Search(), MainScreen(), Leaderboard(), Settings()];
   }
