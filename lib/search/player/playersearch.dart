@@ -64,11 +64,14 @@ class _Searchplayers extends State<Searchplayers> {
               ),
               ElevatedButton(
                   child: Text(
-                    'Search EchoArena',
-                    style: TextStyle(
-                      color: textcolour,
-                    ),
+                    'Search Echo Arena',
+                    style: TextStyle(color: textcolour, fontSize: 20),
                   ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      fixedSize: const Size(210, 70),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
                     if (myController.text.isNotEmpty) {
                       setState(() {
@@ -82,8 +85,19 @@ class _Searchplayers extends State<Searchplayers> {
                       );
                     }
                   }),
+              SizedBox(
+                height: 50.0,
+              ),
               ElevatedButton(
-                  child: Text('Search Onward'),
+                  child: Text(
+                    'Search Onward',
+                    style: TextStyle(color: textcolour, fontSize: 20),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      fixedSize: const Size(210, 70),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
                     if (myController.text.isNotEmpty) {
                       setState(() {
@@ -97,8 +111,19 @@ class _Searchplayers extends State<Searchplayers> {
                       );
                     }
                   }),
+              SizedBox(
+                height: 50.0,
+              ),
               ElevatedButton(
-                  child: Text('Search Snapshot'),
+                  child: Text(
+                    'Search Snapshot',
+                    style: TextStyle(color: textcolour, fontSize: 20),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      fixedSize: const Size(210, 70),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
                     if (myController.text.isNotEmpty) {
                       setState(() {
@@ -112,8 +137,19 @@ class _Searchplayers extends State<Searchplayers> {
                       );
                     }
                   }),
+              SizedBox(
+                height: 50.0,
+              ),
               ElevatedButton(
-                  child: Text('Search Pavlov'),
+                  child: Text(
+                    'Search Pavlov',
+                    style: TextStyle(color: textcolour, fontSize: 20),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      fixedSize: const Size(210, 70),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
                     setState(() {
                       searcharea = 'pavlov';

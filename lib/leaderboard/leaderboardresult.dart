@@ -25,8 +25,8 @@ class _LeaderboardResultsState extends State<LeaderboardResults> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Leaderboard for $searcharea'),
-      ),
+          title: Text('Leaderboard for $searcharea'),
+          backgroundColor: appbarcolor),
       backgroundColor: colourscheme,
       body: FutureBuilder<String>(
         future: parJson,
