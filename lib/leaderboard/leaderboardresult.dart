@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:VRML_APP/leaderboard/leaderboard.dart';
 import 'package:flutter/material.dart';
 
 import 'package:VRML_APP/globalvariables.dart';
@@ -10,7 +11,11 @@ import 'package:VRML_APP/search/team/teamidresult.dart';
 
 //CREATES THE SearchResults CRAP
 class LeaderboardResults extends StatefulWidget {
+  final String leaderboardlocation;
+  final String leaderboardgame;
   const LeaderboardResults({
+    required this.leaderboardlocation,
+    required this.leaderboardgame,
     Key? key,
   }) : super(key: key);
 
@@ -19,14 +24,17 @@ class LeaderboardResults extends StatefulWidget {
 }
 
 class _LeaderboardResultsState extends State<LeaderboardResults> {
-  Future<String> parJson = getLeaderboards();
+  late Future<String> parJson =
+      getLeaderboards(widget.leaderboardlocation, widget.leaderboardgame);
+  late String leaderboard = widget.leaderboardlocation +
+      " " +
+      widget.leaderboardgame +
+      ' Leaderboard';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text('Leaderboard for $searcharea'),
-          backgroundColor: appbarcolor),
+      appBar: AppBar(title: Text(leaderboard), backgroundColor: appbarcolor),
       backgroundColor: colourscheme,
       body: FutureBuilder<String>(
         future: parJson,

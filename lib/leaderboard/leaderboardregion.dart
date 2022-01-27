@@ -1,26 +1,30 @@
 import 'package:VRML_APP/globalvariables.dart';
-import 'package:VRML_APP/leaderboard/leaderboardregion.dart';
+import 'package:VRML_APP/leaderboard/leaderboardresult.dart';
+import 'package:VRML_APP/search/search.dart';
 
 import 'package:flutter/material.dart';
 
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+
 //CREATES THE PROFILE CRAP
-class Leaderboard extends StatefulWidget {
-  const Leaderboard({
+class Leaderboardregion extends StatefulWidget {
+  final String leaderboardgame;
+  const Leaderboardregion({
+    required this.leaderboardgame,
     Key? key,
   }) : super(key: key);
 
   @override
-  _Leaderboard createState() => _Leaderboard();
+  _Leaderboardregion createState() => _Leaderboardregion();
 }
 
-class _Leaderboard extends State<Leaderboard> {
+class _Leaderboardregion extends State<Leaderboardregion> {
+  late Future<String> game = widget.leaderboardgame as Future<String>;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text('Leaderboard'),
-          automaticallyImplyLeading: false,
-          backgroundColor: appbarcolor),
+          title: Text('Leaderboard Region'), backgroundColor: appbarcolor),
       backgroundColor: colourscheme,
       body: FutureBuilder<Map<String, dynamic>>(
         builder: (context, snapshot) {
@@ -36,13 +40,13 @@ class _Leaderboard extends State<Leaderboard> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Leaderboardregion(
-                                leaderboardgame: 'Onward',
-                              )),
+                          builder: (context) => LeaderboardResults(
+                              leaderboardlocation: '',
+                              leaderboardgame: widget.leaderboardgame)),
                     );
                   },
                   child: Text(
-                    'Onward',
+                    'Global',
                     style: TextStyle(color: textcolour, fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
@@ -61,13 +65,13 @@ class _Leaderboard extends State<Leaderboard> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Leaderboardregion(
-                                leaderboardgame: 'EchoArena',
-                              )),
+                          builder: (context) => LeaderboardResults(
+                              leaderboardlocation: 'OCE',
+                              leaderboardgame: widget.leaderboardgame)),
                     );
                   },
                   child: Text(
-                    'Echo Arena',
+                    'OCE',
                     style: TextStyle(color: textcolour, fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
@@ -86,13 +90,13 @@ class _Leaderboard extends State<Leaderboard> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Leaderboardregion(
-                                leaderboardgame: 'Pavlov',
-                              )),
+                          builder: (context) => LeaderboardResults(
+                              leaderboardlocation: 'NA',
+                              leaderboardgame: widget.leaderboardgame)),
                     );
                   },
                   child: Text(
-                    'Pavlov',
+                    'NA',
                     style: TextStyle(color: textcolour, fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
@@ -111,13 +115,13 @@ class _Leaderboard extends State<Leaderboard> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Leaderboardregion(
-                                leaderboardgame: 'SnapShot',
-                              )),
+                          builder: (context) => LeaderboardResults(
+                              leaderboardlocation: 'EU',
+                              leaderboardgame: widget.leaderboardgame)),
                     );
                   },
                   child: Text(
-                    'SnapShot',
+                    'EU',
                     style: TextStyle(color: textcolour, fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(

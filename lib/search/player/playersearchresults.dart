@@ -35,26 +35,27 @@ class _PlayerSearchResultsState extends State<PlayerSearchResults> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
+                itemCount: snapshot.data!.length,
                 itemBuilder: (BuildContext context, int index) {
-              return Card(
-                child: ListTile(
-                  leading: Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                          image: NetworkImage(
-                              host + snapshot.data![index]['image']),
-                          fit: BoxFit.fill),
+                  return Card(
+                    child: ListTile(
+                      leading: Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              image: NetworkImage(
+                                  host + snapshot.data![index]['image']),
+                              fit: BoxFit.fill),
+                        ),
+                      ),
+                      title: Text(snapshot.data![index]['name'].toString()),
                     ),
-                  ),
-                  title: Text(snapshot.data![index]['name'].toString()),
-                ),
 
-                //SizedBox(width: 20),
-              );
-            });
+                    //SizedBox(width: 20),
+                  );
+                });
           } else if (snapshot.hasError) {
             print(snapshot.stackTrace);
             print(snapshot.error.toString());

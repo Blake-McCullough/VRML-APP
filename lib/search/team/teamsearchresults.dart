@@ -22,7 +22,7 @@ class _TeamSearchResultsState extends State<TeamSearchResults> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text('Leaderboard for $searcharea'),
+          title: Text('Results for $userinput in $searcharea'),
           backgroundColor: appbarcolor),
       backgroundColor: colourscheme,
       body: FutureBuilder<List<Map<String, dynamic>>>(
@@ -30,38 +30,39 @@ class _TeamSearchResultsState extends State<TeamSearchResults> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
+                itemCount: snapshot.data!.length,
                 itemBuilder: (BuildContext context, int index) {
-              return Card(
-                child: ListTile(
-                  leading: Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                          image: NetworkImage(
-                              host + snapshot.data![index]['image']),
-                          fit: BoxFit.fill),
+                  return Card(
+                    child: ListTile(
+                      leading: Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              image: NetworkImage(
+                                  host + snapshot.data![index]['image']),
+                              fit: BoxFit.fill),
+                        ),
+                      ),
+                      title: Text(snapshot.data![index]['name'].toString()),
+                      trailing: IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TeamResults(
+                                      teamID: snapshot.data![index]['id'],
+                                    )),
+                          );
+                        },
+                        icon: Icon(Icons.more_vert),
+                      ),
                     ),
-                  ),
-                  title: Text(snapshot.data![index]['name'].toString()),
-                  trailing: IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => TeamResults(
-                                  teamID: snapshot.data![index]['id'],
-                                )),
-                      );
-                    },
-                    icon: Icon(Icons.more_vert),
-                  ),
-                ),
 
-                //SizedBox(width: 20),
-              );
-            });
+                    //SizedBox(width: 20),
+                  );
+                });
           } else if (snapshot.hasError) {
             print(snapshot.stackTrace);
             print(snapshot.error.toString());
