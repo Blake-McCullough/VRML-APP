@@ -1,12 +1,11 @@
 import 'dart:convert';
 
-import 'package:VRML_APP/leaderboard/leaderboard.dart';
 import 'package:flutter/material.dart';
 
 import 'package:VRML_APP/globalvariables.dart';
 import 'package:VRML_APP/homescreen/homescreen.dart';
 import 'package:VRML_APP/leaderboard/leaderboardhttp.dart';
-import 'package:VRML_APP/search/search.dart';
+import 'package:VRML_APP/main.dart';
 import 'package:VRML_APP/search/team/teamidresult.dart';
 
 //CREATES THE SearchResults CRAP

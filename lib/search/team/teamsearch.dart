@@ -62,14 +62,12 @@ class _Searchteams extends State<Searchteams> {
                           borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
                     if (myController.text.isNotEmpty) {
-                      setState(() {
-                        searcharea = 'EchoArena';
-                        userinput = myController.text;
-                      });
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const TeamSearchResults()),
+                            builder: (context) => TeamSearchResults(
+                                game: 'EchoArena',
+                                userinput: myController.text)),
                       );
                     }
                   }),
@@ -88,14 +86,11 @@ class _Searchteams extends State<Searchteams> {
                           borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
                     if (myController.text.isNotEmpty) {
-                      setState(() {
-                        searcharea = 'Onward';
-                        userinput = myController.text;
-                      });
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const TeamSearchResults()),
+                            builder: (context) => TeamSearchResults(
+                                game: 'Onward', userinput: myController.text)),
                       );
                     }
                   }),
@@ -114,14 +109,12 @@ class _Searchteams extends State<Searchteams> {
                           borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
                     if (myController.text.isNotEmpty) {
-                      setState(() {
-                        searcharea = 'Snapshot';
-                        userinput = myController.text;
-                      });
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const TeamSearchResults()),
+                            builder: (context) => TeamSearchResults(
+                                game: 'SnapShot',
+                                userinput: myController.text)),
                       );
                     }
                   }),
@@ -139,14 +132,11 @@ class _Searchteams extends State<Searchteams> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
-                    setState(() {
-                      searcharea = 'pavlov';
-                      userinput = myController.text;
-                    });
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const TeamSearchResults()),
+                          builder: (context) => TeamSearchResults(
+                              game: 'Pavlov', userinput: myController.text)),
                     );
                   }),
             ],

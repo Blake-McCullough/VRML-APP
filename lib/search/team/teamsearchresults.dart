@@ -1,4 +1,5 @@
 import 'package:VRML_APP/homescreen/homescreen.dart';
+import 'package:VRML_APP/main.dart';
 import 'package:VRML_APP/search/search.dart';
 import 'package:VRML_APP/search/team/teamhttp.dart';
 import 'package:VRML_APP/search/team/teamidresult.dart';
@@ -7,7 +8,12 @@ import 'package:VRML_APP/globalvariables.dart';
 import 'package:flutter/material.dart';
 
 class TeamSearchResults extends StatefulWidget {
+  final String userinput;
+  final String game;
+
   const TeamSearchResults({
+    required this.game,
+    required this.userinput,
     Key? key,
   }) : super(key: key);
 
@@ -16,14 +22,16 @@ class TeamSearchResults extends StatefulWidget {
 }
 
 class _TeamSearchResultsState extends State<TeamSearchResults> {
-  Future<List<Map<String, dynamic>>> parJson = getTeamSearch();
+  late Future<List<Map<String, dynamic>>> parJson =
+      getTeamSearch(widget.game, widget.userinput);
+
+  late String playersearch =
+      "Results for " + widget.userinput + " in " + widget.game;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text('Results for $userinput in $searcharea'),
-          backgroundColor: appbarcolor),
+      appBar: AppBar(title: Text(playersearch), backgroundColor: appbarcolor),
       backgroundColor: colourscheme,
       body: FutureBuilder<List<Map<String, dynamic>>>(
         future: parJson,

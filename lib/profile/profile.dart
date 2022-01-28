@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:VRML_APP/globalvariables.dart';
 
+String? teamname;
+final host = 'https://vrmasterleague.com';
+
 //CREATES THE PROFILE CRAP
 class Profile extends StatefulWidget {
   const Profile({
@@ -21,7 +24,11 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Profile'), backgroundColor: appbarcolor),
+      appBar: AppBar(
+        title: Text('Profile'),
+        backgroundColor: appbarcolor,
+        automaticallyImplyLeading: false,
+      ),
       backgroundColor: colourscheme,
       body: FutureBuilder<Map<String, dynamic>>(
         future: parJson,
@@ -70,7 +77,7 @@ class _ProfileState extends State<Profile> {
                               style: TextStyle(
                                   color: Colors.black,
                                   decoration: TextDecoration.underline)),
-                          Text(teamname!),
+                          Text('N/A'),
                         ],
                       ),
                     ],
@@ -102,34 +109,6 @@ class _ProfileState extends State<Profile> {
                     ],
                   ),
                 ),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      pushNewScreenWithRouteSettings(
-                        context,
-                        settings: RouteSettings(name: '/profile'),
-                        screen: MyApp(),
-                        pageTransitionAnimation:
-                            PageTransitionAnimation.scaleRotate,
-                      );
-                    },
-                    child: Text(
-                      "Edit profile",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      //get ya mum bitch();
-                    },
-                    child: Text(
-                      "Get Token",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
                 SizedBox(
                   height: 60.0,
                 ),
@@ -138,7 +117,65 @@ class _ProfileState extends State<Profile> {
           } else if (snapshot.hasError) {
             print(snapshot.stackTrace);
             print(snapshot.error.toString());
-            return ComingSoon();
+            return ListView(
+              physics: BouncingScrollPhysics(),
+              children: [
+                SizedBox(
+                  height: 225.0,
+                ),
+                Column(
+                  children: [
+                    const Text('Pick an option',
+                        style: TextStyle(
+                            color: Colors.black,
+                            decoration: TextDecoration.underline)),
+                    Center(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          pushNewScreenWithRouteSettings(
+                            context,
+                            settings: RouteSettings(name: '/profile'),
+                            screen: Profile(),
+                            pageTransitionAnimation:
+                                PageTransitionAnimation.scaleRotate,
+                          );
+                        },
+                        child: Text(
+                          "View profile (Only if previously signed in)",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Edit profile (N/A)",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MyApp()),
+                          );
+                        },
+                        child: Text(
+                          "Sign In",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 60.0,
+                    ),
+                  ],
+                ),
+              ],
+            );
             //return Center(
             //  child: ElevatedButton(
             //    child: Text('Signin'),

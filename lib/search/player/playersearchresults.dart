@@ -1,18 +1,19 @@
 import 'package:VRML_APP/search/player/playerhttp.dart';
-import 'package:VRML_APP/search/search.dart';
+
 import 'package:VRML_APP/homescreen/homescreen.dart';
-import 'package:VRML_APP/search/search.dart';
-import 'package:VRML_APP/search/team/teamhttp.dart';
-import 'package:VRML_APP/search/team/teamidresult.dart';
+
 import 'package:VRML_APP/globalvariables.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 
-import 'package:VRML_APP/globalvariables.dart';
+import 'package:VRML_APP/main.dart';
 
 class PlayerSearchResults extends StatefulWidget {
+  final String userinput;
+  final String game;
   const PlayerSearchResults({
+    required this.game,
+    required this.userinput,
     Key? key,
   }) : super(key: key);
 
@@ -21,14 +22,15 @@ class PlayerSearchResults extends StatefulWidget {
 }
 
 class _PlayerSearchResultsState extends State<PlayerSearchResults> {
-  Future<List<Map<String, dynamic>>> parJson = getPlayersSearch();
+  late Future<List<Map<String, dynamic>>> parJson =
+      getPlayersSearch(widget.game, widget.userinput);
+  late String playersearch =
+      "Results for " + widget.userinput + " in " + widget.game;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text('Results for $userinput in $searcharea'),
-          backgroundColor: appbarcolor),
+      appBar: AppBar(title: Text(playersearch), backgroundColor: appbarcolor),
       backgroundColor: colourscheme,
       body: FutureBuilder<List<Map<String, dynamic>>>(
         future: parJson,

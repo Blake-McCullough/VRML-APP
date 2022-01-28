@@ -2,15 +2,16 @@ import 'dart:convert';
 
 import 'package:VRML_APP/main.dart';
 import 'package:http/http.dart' as http;
-import 'package:VRML_APP/globalvariables.dart';
+import 'package:VRML_APP/profile/profile.dart';
 
 final _client = http.Client();
 
 Future<Map<String, dynamic>> getUserDetails() async {
   //Gets the json for the users info
-  if (tokencode == null) {
+  if (token == null) {
     return Future.error('No Token Set');
   } else {
+    tokencode = 'Bearer ' + token;
     final response = await _client.get(
       Uri.parse('https://api.vrmasterleague.com/User/@Me'),
       headers: {
@@ -27,7 +28,7 @@ Future<Map<String, dynamic>> getUserDetails() async {
       Uri.parse('https://api.vrmasterleague.com/User/@MyTeams'),
       headers: {
         "content-type": "application/json",
-        "Authorization": tokencode,
+        "Authorization": token,
       },
     );
 
@@ -37,12 +38,12 @@ Future<Map<String, dynamic>> getUserDetails() async {
     if (response.body.isNotEmpty) {
       data = jsonDecode(response.body);
 
-      data.addAll(jsonDecode(response2.body));
-      Map<String, dynamic> myteamsJson = data;
-      final myteamslist = myteamsJson["teams"];
-      final myteamsmap = myteamslist[0];
-      final myteamsname = myteamsmap["name"];
-      teamname = myteamsname;
+      //data.addAll(jsonDecode(response2.body));
+      // Map<String, dynamic> myteamsJson = data;
+      //final myteamslist = myteamsJson["teams"];
+      //final myteamsmap = myteamslist[0];
+      //final myteamsname = myteamsmap["name"];
+      //teamname = myteamsname;
       print(response2.body);
       print("_______________________________________");
       print(data);

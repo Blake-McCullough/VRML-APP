@@ -1,7 +1,7 @@
 name: VRML_APP
 description: Demonstrates how to use the flutter_web_auth plugin.
 publish_to: 'none'
-version: 0.0.2+2
+version: 0.0.4+4
 environment:
   sdk: ">=2.12.0 <3.0.0"
 

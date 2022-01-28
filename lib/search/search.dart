@@ -1,10 +1,8 @@
-import 'package:VRML_APP/comingsoon.dart';
 import 'package:VRML_APP/globalvariables.dart';
-import 'package:VRML_APP/leaderboard/leaderboard.dart';
-import 'package:VRML_APP/profile/profile.dart';
+
 import 'package:VRML_APP/search/player/playersearch.dart';
 import 'package:VRML_APP/search/team/teamsearch.dart';
-import 'package:VRML_APP/settings/settings.dart';
+
 import 'package:flutter/material.dart';
 
 // Define a custom Form widget.

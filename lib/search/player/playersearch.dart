@@ -1,10 +1,5 @@
-import 'package:VRML_APP/profile/profile.dart';
-import 'package:VRML_APP/search/search.dart';
-import 'package:VRML_APP/settings/settings.dart';
 import 'package:flutter/material.dart';
 
-import 'package:VRML_APP/leaderboard/leaderboard.dart';
-import 'package:VRML_APP/main.dart';
 import 'package:VRML_APP/globalvariables.dart';
 
 import 'playersearchresults.dart';
@@ -74,14 +69,13 @@ class _Searchplayers extends State<Searchplayers> {
                           borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
                     if (myController.text.isNotEmpty) {
-                      setState(() {
-                        searcharea = 'EchoArena';
-                        userinput = myController.text;
-                      });
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const PlayerSearchResults()),
+                            builder: (context) => PlayerSearchResults(
+                                  game: 'EchoArena',
+                                  userinput: myController.text,
+                                )),
                       );
                     }
                   }),
@@ -100,14 +94,13 @@ class _Searchplayers extends State<Searchplayers> {
                           borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
                     if (myController.text.isNotEmpty) {
-                      setState(() {
-                        searcharea = 'Onward';
-                        userinput = myController.text;
-                      });
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const PlayerSearchResults()),
+                            builder: (context) => PlayerSearchResults(
+                                  game: 'Onward',
+                                  userinput: myController.text,
+                                )),
                       );
                     }
                   }),
@@ -126,14 +119,13 @@ class _Searchplayers extends State<Searchplayers> {
                           borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
                     if (myController.text.isNotEmpty) {
-                      setState(() {
-                        searcharea = 'Snapshot';
-                        userinput = myController.text;
-                      });
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const PlayerSearchResults()),
+                            builder: (context) => PlayerSearchResults(
+                                  game: 'SnapShot',
+                                  userinput: myController.text,
+                                )),
                       );
                     }
                   }),
@@ -151,14 +143,13 @@ class _Searchplayers extends State<Searchplayers> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
-                    setState(() {
-                      searcharea = 'pavlov';
-                      userinput = myController.text;
-                    });
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const PlayerSearchResults()),
+                          builder: (context) => PlayerSearchResults(
+                                game: 'Pavlov',
+                                userinput: myController.text,
+                              )),
                     );
                   }),
             ],

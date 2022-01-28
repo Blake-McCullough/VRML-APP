@@ -1,8 +1,6 @@
 import 'dart:core';
-import 'package:VRML_APP/globalvariables.dart';
-import 'package:VRML_APP/search/search.dart';
+
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 String? region;
 final _client = http.Client();

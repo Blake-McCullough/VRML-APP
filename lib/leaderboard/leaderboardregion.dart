@@ -1,10 +1,7 @@
 import 'package:VRML_APP/globalvariables.dart';
 import 'package:VRML_APP/leaderboard/leaderboardresult.dart';
-import 'package:VRML_APP/search/search.dart';
 
 import 'package:flutter/material.dart';
-
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 //CREATES THE PROFILE CRAP
 class Leaderboardregion extends StatefulWidget {

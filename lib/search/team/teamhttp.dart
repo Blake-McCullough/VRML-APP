@@ -6,13 +6,14 @@ import 'package:http/http.dart' as http;
 
 final _client = http.Client();
 
-Future<List<Map<String, dynamic>>> getTeamSearch() async {
+Future<List<Map<String, dynamic>>> getTeamSearch(
+    String searcharea, String userinput) async {
   List<Map<String, dynamic>> decodedResponse;
   //Gets the json for the users info
   String urlsearch = 'https://api.vrmasterleague.com/' +
       searcharea +
       '/Teams/Search?name=' +
-      userinput!;
+      userinput;
   print(urlsearch);
 
   final response = await _client.get(
