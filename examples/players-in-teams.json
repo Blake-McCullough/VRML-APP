@@ -1,0 +1,73 @@
+
+{
+    "game": "Echo Arena",
+    "id": "PYbNhd4L_bNf-gg9C_al_g2",
+    "name": "Invictus Reserves",
+    "logo": "/images/logos/teams/2f502858-bbbe-4b40-a502-0402c92299f3.png",
+    "regionID": "80VvwPbG7n59j4yzGV2S-g2",
+    "region": "Oceania/Asia",
+    "active": true,
+    "retired": false,
+    "players": [
+        {
+            "id": "QFPIDfjJqrULgAHjNgdCpA2",
+            "userID": "wNc_UOTj4ygIi8dXkfkWCg2",
+            "name": "Kronos10101",
+            "logo": "/images/logos/users/e107d08f-2e74-4040-ad26-30d1f512b4e4.png",
+            "country": "AU",
+            "nationality": "AU",
+            "roleID": "M40DmiDmyky3AVn8ypAC1g2",
+            "role": "Team Owner"
+        },
+        {
+            "id": "RnbTMJ-ixIRBkYCUP7DkKw2",
+            "userID": "HvR1DThfxnkWNm7DKff8Wg2",
+            "name": "Rowdy-",
+            "logo": "/images/logos/users/88b0b128-d8e9-4262-b705-b5378e3ce370.png",
+            "country": "AU",
+            "nationality": "AU",
+            "roleID": "atlu3v0xXhAtFNH5ajRQig2",
+            "role": "Starter"
+        },
+        {
+            "id": "HpSHY8uHPpXXvicZKgSsog2",
+            "userID": "hAn0DXIp2GqHj_BkQuItuw2",
+            "name": "JamesLothbrok",
+            "logo": "/images/player_logo_120.png",
+            "country": "AU",
+            "nationality": "AU",
+            "roleID": "41YGBa7jCcqAQ_F30vYLrQ2",
+            "role": "Player"
+        },
+        {
+            "id": "E7wSe3k_NWuG89LPxqeaLA2",
+            "userID": "BcPK0zaGyQ7EPglOnYl3Ng2",
+            "name": "maxatnasa",
+            "logo": "/images/logos/users/2229b264-1e86-4302-a605-56468950694b.png",
+            "country": "NZ",
+            "nationality": "NZ",
+            "roleID": "41YGBa7jCcqAQ_F30vYLrQ2",
+            "role": "Player"
+        },
+        {
+            "id": "2bU7F8L3ekyL5frSAOEAcQ2",
+            "userID": "n0X46aAuWNFLnAXz2DIvXA2",
+            "name": "Spoiled_Kitten",
+            "logo": "/images/logos/users/ac425767-0e80-4807-b293-5d7564540d1c.png",
+            "country": "AU",
+            "nationality": "",
+            "roleID": "41YGBa7jCcqAQ_F30vYLrQ2",
+            "role": "Player"
+        },
+        {
+            "id": "h1AOumF4MrgDsxUseqwE-A2",
+            "userID": "4AdeHTCeWDXRKjqemvaivg2",
+            "name": "Zayne-",
+            "logo": "/images/logos/users/d4e6c744-1797-4857-bbd0-3b36fdd311bc.png",
+            "country": "AU",
+            "nationality": "AU",
+            "roleID": "41YGBa7jCcqAQ_F30vYLrQ2",
+            "role": "Player"
+        }
+    ]
+}

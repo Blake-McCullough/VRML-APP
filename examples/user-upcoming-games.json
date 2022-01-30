@@ -1,0 +1,66 @@
+{
+    "pending": [],
+    "scheduled": [{
+        "homeTeam": {
+            "id": "PYbNhd4L_bNf-gg9C_al_g2",
+            "name": "Invictus Reserves",
+            "logo": "/images/logos/teams/2f502858-bbbe-4b40-a502-0402c92299f3.png",
+            "regionID": "80VvwPbG7n59j4yzGV2S-g2",
+            "region": "Oceania/Asia"
+        },
+        "awayTeam": {
+            "id": "gvgq3g5kIvvwMrJ4JCJIRg2",
+            "name": "Dragon Slayers",
+            "logo": "/images/logos/teams/2cfc1aaa-0893-4e93-a59f-5b7ca6912447.png",
+            "regionID": "80VvwPbG7n59j4yzGV2S-g2",
+            "region": "Oceania/Asia"
+        },
+        "scores": [{
+            "map": "LHTGagtZFeMht0Fxdj5WxQ2",
+            "homeScore": null,
+            "awayScore": null
+        }, {
+            "map": "LHTGagtZFeMht0Fxdj5WxQ2",
+            "homeScore": null,
+            "awayScore": null
+        }, {
+            "map": "LHTGagtZFeMht0Fxdj5WxQ2",
+            "homeScore": null,
+            "awayScore": null
+        }],
+        "substitutes": [],
+        "mapsOptions": [{
+            "id": "LHTGagtZFeMht0Fxdj5WxQ2",
+            "name": "- Other / Forfeit -"
+        }, {
+            "id": "wqNO5oCownsWQdAr0HxtQA2",
+            "name": "Stadium"
+        }],
+        "substitutesOptions": [{
+            "id": "MMYrEkHw_fCRWI9e_UqvsA2",
+            "name": "AgentVictoria"
+        }, {
+            "id": "te_ebTMRASmOlywgUK1a4g2",
+            "name": "Delfino28_JP"
+        }, {
+            "id": "ZtpDoqEl0ho02mIvYVBSPg2",
+            "name": "JunSuzaku"
+        }, {
+            "id": "GtIZxdZ4HSBr-B510PhAzQ2",
+            "name": "Liamm-"
+        }, {
+            "id": "PPyMuj8d0wQKi7sLTlURyA2",
+            "name": "Mayoneeez"
+        }, {
+            "id": "pY7zRidC0HPxyrsrgV7YjA2",
+            "name": "Mi-Rui"
+        }, {
+            "id": "4f76ZTxuWsKz-EqOob8OFQ2",
+            "name": "Millze321"
+        }, {
+            "id": "RS_SkbDEPItnd-imtpl3DA2",
+            "name": "yuki.yokoyama1"
+        }],
+        "dateScheduled": "2022-01-30 08:00"
+    }]
+}

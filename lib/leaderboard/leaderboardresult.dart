@@ -45,6 +45,12 @@ class _LeaderboardResultsState extends State<LeaderboardResults> {
                 itemBuilder: (BuildContext context, int index) {
               return Card(
                 child: ListTile(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            TeamResults(teamID: newData[index]['id'])),
+                  ),
                   leading: Container(
                     width: 40,
                     height: 40,

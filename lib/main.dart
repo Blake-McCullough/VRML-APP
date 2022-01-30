@@ -1,6 +1,9 @@
 import 'dart:convert';
 import 'dart:math';
+import 'package:VRML_APP/leaderboard/leaderboard.dart';
 import 'package:VRML_APP/profile/profile.dart';
+import 'package:VRML_APP/search/search.dart';
+import 'package:VRML_APP/settings/settings.dart';
 import 'package:crypto/crypto.dart';
 import 'package:VRML_APP/homescreen/homescreen.dart';
 import 'package:flutter/material.dart';
@@ -91,13 +94,7 @@ class _MyAppState extends State<MyApp> {
         token = parsedJsonToken['access_token'];
         print(token);
       }
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => Profile()),
-      );
-      setState(() {
-        token = token;
-      });
+      Navigator.pop(context, true);
     } on PlatformException catch (e) {
       setState(() {
         _status = 'Got error: $e';

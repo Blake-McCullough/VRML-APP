@@ -1,0 +1,5 @@
+https://api.vrmasterleague.com//Teams/PYbNhd4L_bNf-gg9C_al_g2/players = players-in-teams.json
+https://api.vrmasterleague.com//Teams/PYbNhd4L_bNf-gg9C_al_g2/Matches/Upcoming = upcoming-team-game.json
+https://api.vrmasterleague.com/User/@MyMatches = user-upcoming-games.json
+
+

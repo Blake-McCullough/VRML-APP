@@ -1,6 +1,8 @@
+import 'package:VRML_APP/Score-Update/upcominggames.dart';
 import 'package:VRML_APP/comingsoon.dart';
 import 'package:VRML_APP/leaderboard/leaderboard.dart';
 import 'package:VRML_APP/profile/profile.dart';
+import 'package:VRML_APP/profile/profiledecide.dart';
 import 'package:VRML_APP/search/search.dart';
 
 import 'package:VRML_APP/settings/settings.dart';
@@ -80,7 +82,6 @@ class _PersistantBar extends State<PersistantBar> {
       hideNavigationBarWhenKeyboardShows:
           true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
       decoration: NavBarDecoration(
-        borderRadius: BorderRadius.circular(10.0),
         colorBehindNavBar: Colors.white,
       ),
       popAllScreensOnTapOfSelectedTab: true,
@@ -189,6 +190,22 @@ class _MainScreen extends State<MainScreen> {
                   color: textcolour,
                 ),
               ),
+              ElevatedButton(
+                  child: Text(
+                    'Upcoming Games',
+                    style: TextStyle(color: textcolour, fontSize: 20),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      fixedSize: const Size(210, 70),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => UpcomingGames()),
+                    );
+                  }),
             ],
           ),
         ),

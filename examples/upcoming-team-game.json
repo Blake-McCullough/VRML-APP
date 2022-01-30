@@ -1,0 +1,70 @@
+[
+    {
+        "id": "t5hjQYMqPBiT4UogEzET2A2",
+        "homeTeam": {
+            "id": "PYbNhd4L_bNf-gg9C_al_g2",
+            "name": "Invictus Reserves",
+            "logo": "/images/logos/teams/2f502858-bbbe-4b40-a502-0402c92299f3.png",
+            "regionID": "80VvwPbG7n59j4yzGV2S-g2",
+            "region": "Oceania/Asia"
+        },
+        "awayTeam": {
+            "id": "KiA5_z-lH0GOsnpiZ5q8zA2",
+            "name": "Disc Devils",
+            "logo": "/images/logos/teams/1e286a77-5fad-4c69-86de-003de0babbcc.png",
+            "regionID": "80VvwPbG7n59j4yzGV2S-g2",
+            "region": "Oceania/Asia"
+        },
+        "castingInfo": {
+            "channel": null,
+            "casterID": null,
+            "caster": null,
+            "coCasterID": null,
+            "coCaster": null,
+            "cameramanID": null,
+            "cameraman": null,
+            "postGameInterviewID": null,
+            "postGameInterview": null
+        },
+        "homeBetCount": 23,
+        "awayBetCount": 2,
+        "castUpvotes": 5,
+        "currentUserVotedTeamID": null,
+        "currentUserUpvotedCast": false,
+        "dateScheduled": "2022-01-28 08:00"
+    },
+    {
+        "id": "YrHzsOKCG1jdYJOLPCzRgg2",
+        "homeTeam": {
+            "id": "PYbNhd4L_bNf-gg9C_al_g2",
+            "name": "Invictus Reserves",
+            "logo": "/images/logos/teams/2f502858-bbbe-4b40-a502-0402c92299f3.png",
+            "regionID": "80VvwPbG7n59j4yzGV2S-g2",
+            "region": "Oceania/Asia"
+        },
+        "awayTeam": {
+            "id": "gvgq3g5kIvvwMrJ4JCJIRg2",
+            "name": "Dragon Slayers",
+            "logo": "/images/logos/teams/2cfc1aaa-0893-4e93-a59f-5b7ca6912447.png",
+            "regionID": "80VvwPbG7n59j4yzGV2S-g2",
+            "region": "Oceania/Asia"
+        },
+        "castingInfo": {
+            "channel": null,
+            "casterID": null,
+            "caster": null,
+            "coCasterID": null,
+            "coCaster": null,
+            "cameramanID": null,
+            "cameraman": null,
+            "postGameInterviewID": null,
+            "postGameInterview": null
+        },
+        "homeBetCount": 4,
+        "awayBetCount": 14,
+        "castUpvotes": 2,
+        "currentUserVotedTeamID": null,
+        "currentUserUpvotedCast": false,
+        "dateScheduled": "2022-01-30 08:00"
+    }
+]

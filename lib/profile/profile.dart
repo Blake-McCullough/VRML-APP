@@ -19,7 +19,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  Future<Map<String, dynamic>> parJson = getUserDetails();
+  Future<Map<String, dynamic>> profileJson = getUserDetails();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class _ProfileState extends State<Profile> {
       ),
       backgroundColor: colourscheme,
       body: FutureBuilder<Map<String, dynamic>>(
-        future: parJson,
+        future: profileJson,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView(
@@ -131,37 +131,17 @@ class _ProfileState extends State<Profile> {
                             decoration: TextDecoration.underline)),
                     Center(
                       child: ElevatedButton(
-                        onPressed: () {
-                          pushNewScreenWithRouteSettings(
-                            context,
-                            settings: RouteSettings(name: '/profile'),
-                            screen: Profile(),
-                            pageTransitionAnimation:
-                                PageTransitionAnimation.scaleRotate,
-                          );
-                        },
-                        child: Text(
-                          "View profile (Only if previously signed in)",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    Center(
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Edit profile (N/A)",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    Center(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
+                        onPressed: () async {
+                          final reLoadPage = await Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => MyApp()),
                           );
+
+                          if (reLoadPage) {
+                            setState(() {
+                              profileJson = getUserDetails();
+                            });
+                          }
                         },
                         child: Text(
                           "Sign In",
