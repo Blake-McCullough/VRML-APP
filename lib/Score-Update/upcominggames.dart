@@ -6,6 +6,7 @@ import 'package:VRML_APP/main.dart';
 import 'package:VRML_APP/profile/userhttp.dart';
 import 'package:VRML_APP/search/team/teamidresult.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:VRML_APP/globalvariables.dart';
 
@@ -36,47 +37,65 @@ class _UpcomingGamesState extends State<UpcomingGames> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             var newData = json.decode(snapshot.data.toString());
-
-            return ListView.builder(
-                itemCount: newData['scheduled'].length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Card(
-                    child: ListTile(
-                      leading: Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: NetworkImage(host +
-                                  newData['scheduled'][index]['awayTeam']
-                                          ['logo']
-                                      .toString()),
-                              fit: BoxFit.fill),
+            if (newData['scheduled'].length == 0) {
+              return Center(
+                child: Text(
+                  'No Upcoming Games!',
+                  style: TextStyle(
+                    color: textcolour,
+                  ),
+                ),
+              );
+            } else {
+              return ListView.builder(
+                  itemCount: newData['scheduled'].length,
+                  itemBuilder: (BuildContext context, int index) {
+                    var dateFormat = DateFormat(
+                        "hh:mm aa dd-MM-yyyy "); // you can change the format here
+                    var utcDate = dateFormat.format(DateTime.parse(
+                        newData['scheduled'][index]
+                            ['dateScheduled'])); // pass the UTC time here
+                    var localDate =
+                        dateFormat.parse(utcDate, true).toLocal().toString();
+                    var localformateddate =
+                        dateFormat.format(DateTime.parse(localDate));
+                    return Card(
+                      child: ListTile(
+                        leading: Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: NetworkImage(host +
+                                    newData['scheduled'][index]['awayTeam']
+                                            ['logo']
+                                        .toString()),
+                                fit: BoxFit.fill),
+                          ),
+                        ),
+                        title: Text(newData['scheduled'][index]['awayTeam']
+                                ['name']
+                            .toString()),
+                        subtitle: Text("Time: " + localformateddate.toString()),
+                        trailing: IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => TeamResults(
+                                      teamID: newData[index]['awayTeam']
+                                          ['id'])),
+                            );
+                          },
+                          icon: Icon(Icons.more_vert),
                         ),
                       ),
-                      title: Text(newData['scheduled'][index]['awayTeam']
-                              ['name']
-                          .toString()),
-                      subtitle: Text("Time: " +
-                          newData['scheduled'][index]['dateScheduled']
-                              .toString()),
-                      trailing: IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => TeamResults(
-                                    teamID: newData[index]['awayTeam']['id'])),
-                          );
-                        },
-                        icon: Icon(Icons.more_vert),
-                      ),
-                    ),
 
-                    //SizedBox(width: 20),
-                  );
-                });
+                      //SizedBox(width: 20),
+                    );
+                  });
+            }
           } else if (snapshot.hasError) {
             print(snapshot.stackTrace);
             print(snapshot.error.toString());

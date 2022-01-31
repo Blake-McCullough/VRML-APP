@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:math';
+import 'package:VRML_APP/Score-Update/scoreupdatehttp.dart';
 import 'package:VRML_APP/leaderboard/leaderboard.dart';
 import 'package:VRML_APP/profile/profile.dart';
 import 'package:VRML_APP/search/search.dart';
@@ -10,14 +11,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_web_auth/flutter_web_auth.dart';
 //import 'package:persistent_bottom_nav_bar_example_project/screens.dart';
-
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:http/http.dart' as http;
+import 'package:timezone/data/latest_all.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
+import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 
 final host = 'https://vrmasterleague.com';
 var token;
 final _client = http.Client();
 var returnedresult;
-void main() {
+
+FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+// initialise the plugin. app_icon needs to be a added as a drawable resource to the Android head project
+  const AndroidInitializationSettings initializationSettingsAndroid =
+      AndroidInitializationSettings('@drawable/icon');
+  final IOSInitializationSettings initializationSettingsIOS =
+      IOSInitializationSettings();
+  final MacOSInitializationSettings initializationSettingsMacOS =
+      MacOSInitializationSettings();
+  final InitializationSettings initializationSettings = InitializationSettings(
+      android: initializationSettingsAndroid,
+      iOS: initializationSettingsIOS,
+      macOS: initializationSettingsMacOS);
+  await flutterLocalNotificationsPlugin.initialize(
+    initializationSettings,
+  );
+  tz.initializeTimeZones();
+  final String LocalTimeZone = await FlutterNativeTimezone.getLocalTimezone();
+  tz.setLocalLocation(tz.getLocation(LocalTimeZone));
+
   runApp(
     MaterialApp(
       home: PersistantBar(),
@@ -94,6 +120,7 @@ class _MyAppState extends State<MyApp> {
         token = parsedJsonToken['access_token'];
         print(token);
       }
+      getcurrentgamesnotification();
       Navigator.pop(context, true);
     } on PlatformException catch (e) {
       setState(() {
