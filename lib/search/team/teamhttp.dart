@@ -39,3 +39,19 @@ Future<Map<String, dynamic>> getTeamSearchID(String teamID) async {
   var data = jsonDecode(response.body);
   return data;
 }
+
+Future<Map<String, dynamic>> getTeamPlayerSearchID(String teamID) async {
+  //Gets the json for the users info
+  String urlsearch =
+      'https://api.vrmasterleague.com/Teams/' + teamID + '/players/';
+
+  print(urlsearch);
+
+  final response = await _client.get(
+    Uri.parse(urlsearch),
+  );
+  print(response);
+
+  var data = jsonDecode(response.body);
+  return data;
+}

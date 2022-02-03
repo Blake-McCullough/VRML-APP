@@ -7,7 +7,7 @@ bool darkmode = true;
 var colourscheme = Color.fromRGBO(73, 77, 95, 1.0);
 var textcolour = Color.fromRGBO(229, 234, 245, 1.0);
 
-
+var colourboxscheme = Color.fromRGBO(208, 189, 244, 0.5);
 
 //GOTTA REMOVE THSE DICKS
 

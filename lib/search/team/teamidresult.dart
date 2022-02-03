@@ -1,7 +1,8 @@
 import 'package:VRML_APP/main.dart';
 import 'package:VRML_APP/search/team/teamhttp.dart';
 import 'package:VRML_APP/globalvariables.dart';
-
+import 'package:VRML_APP/search/team/teamsearchresults.dart';
+import 'teamplayerresult.dart';
 import 'package:flutter/material.dart';
 
 class TeamResults extends StatefulWidget {
@@ -21,6 +22,7 @@ class _TeamResultsState extends State<TeamResults> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Team Results'), backgroundColor: appbarcolor),
       backgroundColor: colourscheme,
       body: FutureBuilder<Map<String, dynamic>>(
         future: parJson,
@@ -104,27 +106,38 @@ class _TeamResultsState extends State<TeamResults> {
                     ],
                   ),
                 ),
-                Row(
-                  children: [
-                    Flexible(
-                      child: Text(
-                        snapshot.data!['bio']['bioInfo'].toString(),
-                        softWrap: true,
-                        overflow: TextOverflow.fade,
-                        style: TextStyle(
-                          color: Colors.blue,
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 12, 8, 12),
+                  child: Container(
+                    decoration: BoxDecoration(),
+                    child: Row(
+                      children: [
+                        Flexible(
+                          child: Text(
+                            snapshot.data!['bio']['bioInfo'].toString(),
+                            softWrap: true,
+                            overflow: TextOverflow.fade,
+                            style: TextStyle(
+                              color: textcolour,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
                 Center(
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TeamPlayerResults(
+                                    teamID: widget.teamID,
+                                  )));
                     },
                     child: Text(
-                      "Back",
+                      "Players",
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
