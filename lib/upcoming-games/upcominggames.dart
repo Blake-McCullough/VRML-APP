@@ -1,13 +1,12 @@
 import 'dart:convert';
 
-import 'package:VRML_APP/Score-Update/scoreupdatehttp.dart';
-import 'package:VRML_APP/comingsoon.dart';
 import 'package:VRML_APP/main.dart';
-import 'package:VRML_APP/profile/userhttp.dart';
+
 import 'package:VRML_APP/search/team/teamidresult.dart';
+import 'package:VRML_APP/upcoming-games/upcominggameshttp.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+
 import 'package:VRML_APP/globalvariables.dart';
 
 String? teamname;
@@ -37,6 +36,8 @@ class _UpcomingGamesState extends State<UpcomingGames> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             var newData = json.decode(snapshot.data.toString());
+            print('----------');
+            print(newData);
             if (newData['scheduled'].length == 0) {
               return Center(
                 child: Text(
@@ -68,13 +69,13 @@ class _UpcomingGamesState extends State<UpcomingGames> {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                                 image: NetworkImage(host +
-                                    newData['scheduled'][index]['awayTeam']
+                                    newData['scheduled'][index]['homeTeam']
                                             ['logo']
                                         .toString()),
                                 fit: BoxFit.fill),
                           ),
                         ),
-                        title: Text(newData['scheduled'][index]['awayTeam']
+                        title: Text(newData['scheduled'][index]['homeTeam']
                                 ['name']
                             .toString()),
                         subtitle: Text("Time: " + localformateddate.toString()),
@@ -84,8 +85,8 @@ class _UpcomingGamesState extends State<UpcomingGames> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => TeamResults(
-                                      teamID: newData[index]['awayTeam']
-                                          ['id'])),
+                                      teamID: newData['scheduled'][index]
+                                          ['homeTeam']['id'])),
                             );
                           },
                           icon: Icon(Icons.more_vert),
@@ -107,12 +108,31 @@ class _UpcomingGamesState extends State<UpcomingGames> {
                 ),
                 Column(
                   children: [
-                    const Text('Pick an option',
+                    Text('You must sign-in',
                         style: TextStyle(
-                            color: Colors.black,
+                            fontSize: 30,
+                            color: textcolour,
                             decoration: TextDecoration.underline)),
+                    Text(' to see this',
+                        style: TextStyle(
+                            fontSize: 30,
+                            color: textcolour,
+                            decoration: TextDecoration.underline)),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Center(
                       child: ElevatedButton(
+                        child: Text(
+                          'Signin',
+                          style:
+                              TextStyle(color: buttontextcolour, fontSize: 20),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            primary: buttoncolour,
+                            fixedSize: const Size(210, 70),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50))),
                         onPressed: () async {
                           final reLoadPage = await Navigator.push(
                             context,
@@ -125,10 +145,6 @@ class _UpcomingGamesState extends State<UpcomingGames> {
                             });
                           }
                         },
-                        child: Text(
-                          "Sign In",
-                          style: TextStyle(color: Colors.white),
-                        ),
                       ),
                     ),
                     SizedBox(

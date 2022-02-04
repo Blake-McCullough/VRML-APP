@@ -43,10 +43,10 @@ class _Leaderboard extends State<Leaderboard> {
                   },
                   child: Text(
                     'Onward',
-                    style: TextStyle(color: textcolour, fontSize: 20),
+                    style: TextStyle(color: buttontextcolour, fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      primary: buttoncolour,
                       fixedSize: const Size(200, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
@@ -68,10 +68,10 @@ class _Leaderboard extends State<Leaderboard> {
                   },
                   child: Text(
                     'Echo Arena',
-                    style: TextStyle(color: textcolour, fontSize: 20),
+                    style: TextStyle(color: buttontextcolour, fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      primary: buttoncolour,
                       fixedSize: const Size(200, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
@@ -93,10 +93,10 @@ class _Leaderboard extends State<Leaderboard> {
                   },
                   child: Text(
                     'Pavlov',
-                    style: TextStyle(color: textcolour, fontSize: 20),
+                    style: TextStyle(color: buttontextcolour, fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      primary: buttoncolour,
                       fixedSize: const Size(200, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
@@ -118,10 +118,10 @@ class _Leaderboard extends State<Leaderboard> {
                   },
                   child: Text(
                     'SnapShot',
-                    style: TextStyle(color: textcolour, fontSize: 20),
+                    style: TextStyle(color: buttontextcolour, fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      primary: buttoncolour,
                       fixedSize: const Size(200, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),

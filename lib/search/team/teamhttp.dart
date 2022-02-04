@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:VRML_APP/globalvariables.dart';
-import 'package:VRML_APP/search/search.dart';
 import 'package:http/http.dart' as http;
 
 final _client = http.Client();

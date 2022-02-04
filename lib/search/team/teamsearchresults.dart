@@ -1,6 +1,6 @@
 import 'package:VRML_APP/homescreen/homescreen.dart';
 import 'package:VRML_APP/main.dart';
-import 'package:VRML_APP/search/search.dart';
+
 import 'package:VRML_APP/search/team/teamhttp.dart';
 import 'package:VRML_APP/search/team/teamidresult.dart';
 import 'package:VRML_APP/globalvariables.dart';
@@ -40,42 +40,49 @@ class _TeamSearchResultsState extends State<TeamSearchResults> {
             return ListView.builder(
                 itemCount: snapshot.data!.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Card(
-                    child: ListTile(
+                  return GestureDetector(
                       onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => TeamResults(
-                                teamID: snapshot.data![index]['id'])),
-                      ),
-                      leading: Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: NetworkImage(
-                                  host + snapshot.data![index]['image']),
-                              fit: BoxFit.fill),
-                        ),
-                      ),
-                      title: Text(snapshot.data![index]['name'].toString()),
-                      trailing: IconButton(
-                        onPressed: () {
-                          Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => TeamResults(
-                                      teamID: snapshot.data![index]['id'],
-                                    )),
-                          );
-                        },
-                        icon: Icon(Icons.more_vert),
-                      ),
-                    ),
+                                    teamID: snapshot.data![index]['id'])),
+                          ),
+                      child: Card(
+                        child: ListTile(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TeamResults(
+                                    teamID: snapshot.data![index]['id'])),
+                          ),
+                          leading: Container(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                      host + snapshot.data![index]['image']),
+                                  fit: BoxFit.fill),
+                            ),
+                          ),
+                          title: Text(snapshot.data![index]['name'].toString()),
+                          trailing: IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TeamResults(
+                                          teamID: snapshot.data![index]['id'],
+                                        )),
+                              );
+                            },
+                            icon: Icon(Icons.more_vert),
+                          ),
+                        ),
 
-                    //SizedBox(width: 20),
-                  );
+                        //SizedBox(width: 20),
+                      ));
                 });
           } else if (snapshot.hasError) {
             print(snapshot.stackTrace);

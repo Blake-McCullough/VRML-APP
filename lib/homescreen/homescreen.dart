@@ -1,19 +1,13 @@
-import 'package:VRML_APP/Score-Update/scoreupdatehttp.dart';
-import 'package:VRML_APP/Score-Update/upcominggames.dart';
-import 'package:VRML_APP/comingsoon.dart';
 import 'package:VRML_APP/leaderboard/leaderboard.dart';
-import 'package:VRML_APP/leaderboard/leaderboardhttp.dart';
-import 'package:VRML_APP/main.dart';
+
 import 'package:VRML_APP/profile/profile.dart';
 
 import 'package:VRML_APP/search/search.dart';
 
 import 'package:VRML_APP/settings/settings.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:timezone/data/latest_all.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
+
 import 'package:VRML_APP/globalvariables.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
@@ -195,23 +189,37 @@ class _MainScreen extends State<MainScreen> {
                   color: textcolour,
                 ),
               ),
-              ElevatedButton(
-                  child: Text(
-                    'Upcoming Games',
-                    style: TextStyle(color: textcolour, fontSize: 20),
+              Center(
+                child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 12, 8, 12),
+                    child: Container(
+                      child: Text('LatestNews',
+                          style: TextStyle(
+                              color: Color.fromRGBO(121, 125, 246, 1.0),
+                              fontSize: 23,
+                              decoration: TextDecoration.underline)),
+                    )),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 5, 8, 12),
+                child: Container(
+                  decoration: BoxDecoration(),
+                  child: Row(
+                    children: [
+                      Flexible(
+                        child: Text(
+                          'THE LATEST NEWS UPDATE WILL BE HERE!',
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                          style: TextStyle(
+                            color: textcolour,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  style: ElevatedButton.styleFrom(
-                      primary: Color.fromRGBO(208, 189, 244, 1.0),
-                      fixedSize: const Size(210, 70),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50))),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => UpcomingGames()),
-                    );
-                  }),
-              
+                ),
+              ),
             ],
           ),
         ),

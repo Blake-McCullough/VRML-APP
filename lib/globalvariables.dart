@@ -6,8 +6,8 @@ var appbarcolor = Color.fromRGBO(121, 125, 246, 1.0);
 bool darkmode = true;
 var colourscheme = Color.fromRGBO(73, 77, 95, 1.0);
 var textcolour = Color.fromRGBO(229, 234, 245, 1.0);
-
-var colourboxscheme = Color.fromRGBO(208, 189, 244, 0.5);
+var buttontextcolour = Color.fromRGBO(73, 77, 95, 1.0);
+var buttoncolour = Color.fromRGBO(208, 189, 244, 1.0);
 
 //GOTTA REMOVE THSE DICKS
 

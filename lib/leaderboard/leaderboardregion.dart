@@ -44,10 +44,10 @@ class _Leaderboardregion extends State<Leaderboardregion> {
                   },
                   child: Text(
                     'Global',
-                    style: TextStyle(color: textcolour, fontSize: 20),
+                    style: TextStyle(color: buttontextcolour, fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      primary: buttoncolour,
                       fixedSize: const Size(200, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
@@ -69,10 +69,10 @@ class _Leaderboardregion extends State<Leaderboardregion> {
                   },
                   child: Text(
                     'OCE',
-                    style: TextStyle(color: textcolour, fontSize: 20),
+                    style: TextStyle(color: buttontextcolour, fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      primary: buttoncolour,
                       fixedSize: const Size(200, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
@@ -94,10 +94,10 @@ class _Leaderboardregion extends State<Leaderboardregion> {
                   },
                   child: Text(
                     'NA',
-                    style: TextStyle(color: textcolour, fontSize: 20),
+                    style: TextStyle(color: buttontextcolour, fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      primary: buttoncolour,
                       fixedSize: const Size(200, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
@@ -119,10 +119,10 @@ class _Leaderboardregion extends State<Leaderboardregion> {
                   },
                   child: Text(
                     'EU',
-                    style: TextStyle(color: textcolour, fontSize: 20),
+                    style: TextStyle(color: buttontextcolour, fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      primary: buttoncolour,
                       fixedSize: const Size(200, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),

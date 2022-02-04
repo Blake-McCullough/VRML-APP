@@ -2,14 +2,10 @@ import 'dart:core';
 
 import 'package:VRML_APP/main.dart';
 import 'package:http/http.dart' as http;
-import 'package:VRML_APP/settings/settings.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:timezone/data/latest_all.dart' as tz;
+
 import 'package:timezone/timezone.dart' as tz;
-import 'package:VRML_APP/globalvariables.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 String? region;
 final _client = http.Client();

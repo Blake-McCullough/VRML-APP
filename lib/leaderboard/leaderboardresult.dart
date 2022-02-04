@@ -44,53 +44,60 @@ class _LeaderboardResultsState extends State<LeaderboardResults> {
             return ListView.builder(
                 itemCount: newData.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Card(
-                    child: ListTile(
+                  return GestureDetector(
                       onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                TeamResults(teamID: newData[index]['id'])),
-                      ),
-                      leading: Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image:
-                                  NetworkImage(host + newData[index]['logo']),
-                              fit: BoxFit.fill),
-                        ),
-                      ),
-                      title: Text(newData[index]['rank'].toString() +
-                          ") " +
-                          newData[index]['name'].toString()),
-                      subtitle: Text(
-                        "GP: " +
-                            newData[index]['gp'].toString() +
-                            " W: " +
-                            newData[index]['w'].toString() +
-                            " T: " +
-                            newData[index]['t'].toString() +
-                            " L: " +
-                            newData[index]['l'].toString(),
-                      ),
-                      trailing: IconButton(
-                        onPressed: () {
-                          Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
                                     TeamResults(teamID: newData[index]['id'])),
-                          );
-                        },
-                        icon: Icon(Icons.more_vert),
-                      ),
-                    ),
+                          ),
+                      child: Card(
+                        child: ListTile(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    TeamResults(teamID: newData[index]['id'])),
+                          ),
+                          leading: Container(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                      host + newData[index]['logo']),
+                                  fit: BoxFit.fill),
+                            ),
+                          ),
+                          title: Text(newData[index]['rank'].toString() +
+                              ") " +
+                              newData[index]['name'].toString()),
+                          subtitle: Text(
+                            "GP: " +
+                                newData[index]['gp'].toString() +
+                                " W: " +
+                                newData[index]['w'].toString() +
+                                " T: " +
+                                newData[index]['t'].toString() +
+                                " L: " +
+                                newData[index]['l'].toString(),
+                          ),
+                          trailing: IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TeamResults(
+                                        teamID: newData[index]['id'])),
+                              );
+                            },
+                            icon: Icon(Icons.more_vert),
+                          ),
+                        ),
 
-                    //SizedBox(width: 20),
-                  );
+                        //SizedBox(width: 20),
+                      ));
                 });
           } else if (snapshot.hasError) {
             print(snapshot.stackTrace);

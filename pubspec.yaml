@@ -1,7 +1,7 @@
 name: VRML_APP
 description: Demonstrates how to use the flutter_web_auth plugin.
 publish_to: 'none'
-version: 0.0.7+7
+version: 0.0.9+9
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
@@ -24,6 +24,12 @@ dependencies:
   flutter_native_timezone: ^2.0.0
   intl: ^0.17.0
   date_time_format: ^2.0.1
+  wheel_chooser: ^1.0.0
+  flutter_material_pickers: ^3.1.2
+  vertical_picker: ^0.0.1
+  country_list_pick: ^1.0.1+5
+
+  
 
 dev_dependencies:
   flutter_test:

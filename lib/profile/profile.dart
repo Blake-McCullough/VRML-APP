@@ -1,9 +1,10 @@
-import 'package:VRML_APP/comingsoon.dart';
 import 'package:VRML_APP/main.dart';
+import 'package:VRML_APP/profile/editprofile.dart';
 import 'package:VRML_APP/profile/userhttp.dart';
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:vertical_picker/vertical_picker.dart';
 import 'package:VRML_APP/globalvariables.dart';
+import 'package:wheel_chooser/wheel_chooser.dart';
 
 String? teamname;
 final host = 'https://vrmasterleague.com';
@@ -50,65 +51,85 @@ class _ProfileState extends State<Profile> {
                 ),
                 Column(
                   children: [
-                    const Text('Username',
+                    Text('Username:',
                         style: TextStyle(
-                            color: Colors.black,
+                            fontSize: 20,
+                            color: textcolour,
                             decoration: TextDecoration.underline)),
-                    Text(snapshot.data!['username']),
+                    Text(snapshot.data!['username'],
+                        style: TextStyle(
+                          color: textcolour,
+                        ))
                   ],
                 ),
                 Container(
-                  padding: const EdgeInsets.all(20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          const Text('Discord:',
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment
+                                .center, //Center Row contents horizontally,
+                            crossAxisAlignment: CrossAxisAlignment
+                                .center, //Center Row contents vertically,
+                            children: [
+                              Column(children: [
+                                Text('Timezone:',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color: textcolour,
+                                        decoration: TextDecoration.underline)),
+                                Text(snapshot.data!['timezone'],
+                                    style: TextStyle(
+                                      color: textcolour,
+                                    )),
+                              ]),
+                              Column(children: [
+                                Text('Country:',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color: textcolour,
+                                        decoration: TextDecoration.underline)),
+                                Text(snapshot.data!['country'],
+                                    style: TextStyle(
+                                      color: textcolour,
+                                    ))
+                              ]),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          Column(
+                            children: [
+                              Text('Discord:',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: textcolour,
+                                      decoration: TextDecoration.underline)),
+                              Text(snapshot.data!['discordTag'],
+                                  style: TextStyle(
+                                    color: textcolour,
+                                  ))
+                            ],
+                          ),
+                          SizedBox(
+                            height: 30.0,
+                          ),
+                          ElevatedButton(
+                            child: Text(
+                              'Edit Profile (N/A)',
                               style: TextStyle(
-                                  color: Colors.black,
-                                  decoration: TextDecoration.underline)),
-                          Text(snapshot.data!['discordTag']),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          const Text('Team/s:',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  decoration: TextDecoration.underline)),
-                          Text('N/A'),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        children: [
-                          const Text('TimeZone:',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  decoration: TextDecoration.underline)),
-                          Text(snapshot.data!['timezone']),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          const Text('Country:',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  decoration: TextDecoration.underline)),
-                          Text(snapshot.data!['country']),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                                  color: buttontextcolour, fontSize: 20),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                                primary: buttoncolour,
+                                fixedSize: const Size(210, 70),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50))),
+                            onPressed: () {},
+                          ),
+                        ])),
                 SizedBox(
                   height: 60.0,
                 ),
@@ -125,28 +146,46 @@ class _ProfileState extends State<Profile> {
                 ),
                 Column(
                   children: [
-                    const Text('Pick an option',
+                    Text('You must sign-in',
                         style: TextStyle(
-                            color: Colors.black,
+                            fontSize: 30,
+                            color: textcolour,
                             decoration: TextDecoration.underline)),
+                    Text(' to see this',
+                        style: TextStyle(
+                            fontSize: 30,
+                            color: textcolour,
+                            decoration: TextDecoration.underline)),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Center(
                       child: ElevatedButton(
+                        child: Text(
+                          'Signin',
+                          style:
+                              TextStyle(color: buttontextcolour, fontSize: 20),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            primary: buttoncolour,
+                            fixedSize: const Size(210, 70),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50))),
                         onPressed: () async {
                           final reLoadPage = await Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => MyApp()),
                           );
-
-                          if (reLoadPage) {
+                          if (reLoadPage == null) {
+                            setState(() {
+                              profileJson = getUserDetails();
+                            });
+                          } else if (reLoadPage) {
                             setState(() {
                               profileJson = getUserDetails();
                             });
                           }
                         },
-                        child: Text(
-                          "Sign In",
-                          style: TextStyle(color: Colors.white),
-                        ),
                       ),
                     ),
                     SizedBox(

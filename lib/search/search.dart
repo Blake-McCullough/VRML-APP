@@ -61,10 +61,10 @@ class _Search extends State<Search> {
                 child: ElevatedButton(
                     child: Text(
                       'Team Search',
-                      style: TextStyle(color: textcolour, fontSize: 20),
+                      style: TextStyle(color: buttontextcolour, fontSize: 20),
                     ),
                     style: ElevatedButton.styleFrom(
-                        primary: Color.fromRGBO(208, 189, 244, 1.0),
+                        primary: buttoncolour,
                         fixedSize: const Size(210, 70),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50))),
@@ -82,10 +82,10 @@ class _Search extends State<Search> {
                 child: ElevatedButton(
                     child: Text(
                       'Player Search',
-                      style: TextStyle(color: textcolour, fontSize: 20),
+                      style: TextStyle(color: buttontextcolour, fontSize: 20),
                     ),
                     style: ElevatedButton.styleFrom(
-                        primary: Color.fromRGBO(208, 189, 244, 1.0),
+                        primary: buttoncolour,
                         fixedSize: const Size(210, 70),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50))),

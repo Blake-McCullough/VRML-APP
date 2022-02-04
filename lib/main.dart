@@ -1,16 +1,14 @@
 import 'dart:convert';
 import 'dart:math';
-import 'package:VRML_APP/Score-Update/scoreupdatehttp.dart';
-import 'package:VRML_APP/leaderboard/leaderboard.dart';
-import 'package:VRML_APP/profile/profile.dart';
-import 'package:VRML_APP/search/search.dart';
-import 'package:VRML_APP/settings/settings.dart';
-import 'package:crypto/crypto.dart';
+
+import 'package:VRML_APP/globalvariables.dart';
+import 'package:VRML_APP/upcoming-games/upcominggameshttp.dart';
+
 import 'package:VRML_APP/homescreen/homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_web_auth/flutter_web_auth.dart';
-//import 'package:persistent_bottom_nav_bar_example_project/screens.dart';
+
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:http/http.dart' as http;
 import 'package:timezone/data/latest_all.dart' as tz;
@@ -41,8 +39,8 @@ Future<void> main() async {
     initializationSettings,
   );
   tz.initializeTimeZones();
-  final String LocalTimeZone = await FlutterNativeTimezone.getLocalTimezone();
-  tz.setLocalLocation(tz.getLocation(LocalTimeZone));
+  final String localTimeZone = await FlutterNativeTimezone.getLocalTimezone();
+  tz.setLocalLocation(tz.getLocation(localTimeZone));
 
   runApp(
     MaterialApp(
@@ -69,7 +67,7 @@ class MyApp extends StatefulWidget {
 Codec<String, String> stringToBase64Url = utf8.fuse(base64);
 
 class _MyAppState extends State<MyApp> {
-  String _status = '';
+  String _status = 'Not-Signed-In';
 
   @override
   void initState() {
@@ -133,14 +131,32 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+            title: Text('SignIn'),
+            automaticallyImplyLeading: false,
+            backgroundColor: appbarcolor),
+        backgroundColor: colourscheme,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text('Status: $_status\n'),
+              Text(
+                'Status: $_status\n',
+                style: TextStyle(
+                  color: textcolour,
+                ),
+              ),
               const SizedBox(height: 80),
               ElevatedButton(
-                child: Text('Signin'),
+                child: Text(
+                  'Sign In',
+                  style: TextStyle(color: buttontextcolour, fontSize: 20),
+                ),
+                style: ElevatedButton.styleFrom(
+                    primary: buttoncolour,
+                    fixedSize: const Size(210, 70),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50))),
                 onPressed: () {
                   this.authenticate();
                 },

@@ -1,9 +1,5 @@
-import 'package:VRML_APP/search/search.dart';
+import 'package:VRML_APP/upcoming-games/upcominggames.dart';
 import 'package:flutter/material.dart';
-
-import '../comingsoon.dart';
-
-import '../profile/profile.dart';
 
 import 'package:VRML_APP/globalvariables.dart';
 
@@ -94,6 +90,22 @@ class _Settings extends State<Settings> {
                   color: textcolour,
                 ),
               ),
+              ElevatedButton(
+                  child: Text(
+                    'Upcoming Games',
+                    style: TextStyle(color: buttontextcolour, fontSize: 20),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: buttoncolour,
+                      fixedSize: const Size(210, 70),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => UpcomingGames()),
+                    );
+                  }),
             ],
           ),
         ),

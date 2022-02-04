@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:VRML_APP/main.dart';
+import 'package:VRML_APP/upcoming-games/upcominggameshttp.dart';
 import 'package:http/http.dart' as http;
-import 'package:VRML_APP/profile/profile.dart';
 
 final _client = http.Client();
 
@@ -34,7 +34,10 @@ Future<Map<String, dynamic>> getUserDetails() async {
 
     var data;
     //MERGES THE TWO RESPONSES
-
+    //Delay as server only allows one request per second
+    await Future.delayed(Duration(seconds: 2));
+    //Gets the notifications
+    getcurrentgamesnotification();
     if (response.body.isNotEmpty) {
       data = jsonDecode(response.body);
 

@@ -44,6 +44,7 @@ class _Searchplayers extends State<Searchplayers> {
               Text(
                 'Search Players',
                 style: TextStyle(
+                  fontSize: 30,
                   color: textcolour,
                 ),
               ),
@@ -51,19 +52,21 @@ class _Searchplayers extends State<Searchplayers> {
                 padding: const EdgeInsets.symmetric(
                     horizontal: 30.0, vertical: 20.0),
                 child: TextField(
+                  style: TextStyle(fontSize: 18, color: textcolour),
                   decoration: InputDecoration(
-                    hintText: "Do not leave me empty!",
-                  ),
+                      hintStyle: TextStyle(color: textcolour),
+                      hintText: "Do not leave me empty!",
+                      focusColor: textcolour),
                   controller: myController,
                 ),
               ),
               ElevatedButton(
                   child: Text(
                     'Search Echo Arena',
-                    style: TextStyle(color: textcolour, fontSize: 20),
+                    style: TextStyle(color: buttontextcolour, fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      primary: buttoncolour,
                       fixedSize: const Size(210, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
@@ -85,10 +88,10 @@ class _Searchplayers extends State<Searchplayers> {
               ElevatedButton(
                   child: Text(
                     'Search Onward',
-                    style: TextStyle(color: textcolour, fontSize: 20),
+                    style: TextStyle(color: buttontextcolour, fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      primary: buttoncolour,
                       fixedSize: const Size(210, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
@@ -110,10 +113,10 @@ class _Searchplayers extends State<Searchplayers> {
               ElevatedButton(
                   child: Text(
                     'Search Snapshot',
-                    style: TextStyle(color: textcolour, fontSize: 20),
+                    style: TextStyle(color: buttontextcolour, fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      primary: buttoncolour,
                       fixedSize: const Size(210, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
@@ -135,10 +138,10 @@ class _Searchplayers extends State<Searchplayers> {
               ElevatedButton(
                   child: Text(
                     'Search Pavlov',
-                    style: TextStyle(color: textcolour, fontSize: 20),
+                    style: TextStyle(color: buttontextcolour, fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: Color.fromRGBO(208, 189, 244, 1.0),
+                      primary: buttoncolour,
                       fixedSize: const Size(210, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
