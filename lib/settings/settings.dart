@@ -1,3 +1,4 @@
+import 'package:VRML_APP/main.dart';
 import 'package:VRML_APP/upcoming-games/upcominggames.dart';
 import 'package:flutter/material.dart';
 
@@ -30,10 +31,9 @@ class _Settings extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text('Settings'),
-          automaticallyImplyLeading: false,
-          backgroundColor: appbarcolor),
-      backgroundColor: colourscheme,
+        title: Text('Settings'),
+        automaticallyImplyLeading: false,
+      ),
       body: Container(
         child: Center(
           child: Column(
@@ -105,6 +105,32 @@ class _Settings extends State<Settings> {
                       context,
                       MaterialPageRoute(builder: (context) => UpcomingGames()),
                     );
+                  }),
+              ElevatedButton(
+                  child: Text(
+                    'Dark Mode',
+                    style: TextStyle(color: buttontextcolour, fontSize: 20),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: buttoncolour,
+                      fixedSize: const Size(210, 70),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
+                  onPressed: () {
+                    MyApp.of(context)!.changeTheme(ThemeMode.dark);
+                  }),
+              ElevatedButton(
+                  child: Text(
+                    'Light Mode',
+                    style: TextStyle(color: buttontextcolour, fontSize: 20),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: buttoncolour,
+                      fixedSize: const Size(210, 70),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
+                  onPressed: () {
+                    MyApp.of(context)!.changeTheme(ThemeMode.light);
                   }),
             ],
           ),

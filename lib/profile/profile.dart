@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:vertical_picker/vertical_picker.dart';
 import 'package:VRML_APP/globalvariables.dart';
 import 'package:wheel_chooser/wheel_chooser.dart';
+import 'package:VRML_APP/loginpage.dart';
 
 String? teamname;
 final host = 'https://vrmasterleague.com';
@@ -174,7 +175,7 @@ class _ProfileState extends State<Profile> {
                         onPressed: () async {
                           final reLoadPage = await Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => MyApp()),
+                            MaterialPageRoute(builder: (context) => Login()),
                           );
                           if (reLoadPage == null) {
                             setState(() {
@@ -201,7 +202,7 @@ class _ProfileState extends State<Profile> {
             //  onPressed: () {
             //  Navigator.push(
             //  context,
-            //MaterialPageRoute(builder: (context) => MyApp()),
+            //MaterialPageRoute(builder: (context) => Login()),
             //);
             //}));
           } else {

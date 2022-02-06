@@ -1,5 +1,6 @@
 import 'package:VRML_APP/globalvariables.dart';
 import 'package:VRML_APP/leaderboard/leaderboardregion.dart';
+import 'package:VRML_APP/main.dart';
 
 import 'package:flutter/material.dart';
 
@@ -18,10 +19,9 @@ class _Leaderboard extends State<Leaderboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text('Leaderboard'),
-          automaticallyImplyLeading: false,
-          backgroundColor: appbarcolor),
-      backgroundColor: colourscheme,
+        title: Text('Leaderboard'),
+        automaticallyImplyLeading: false,
+      ),
       body: FutureBuilder<Map<String, dynamic>>(
         builder: (context, snapshot) {
           return ListView(

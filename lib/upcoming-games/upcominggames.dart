@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:VRML_APP/loginpage.dart';
 import 'package:VRML_APP/main.dart';
 
 import 'package:VRML_APP/search/team/teamidresult.dart';
@@ -136,7 +137,7 @@ class _UpcomingGamesState extends State<UpcomingGames> {
                         onPressed: () async {
                           final reLoadPage = await Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => MyApp()),
+                            MaterialPageRoute(builder: (context) => Login()),
                           );
 
                           if (reLoadPage) {
@@ -160,7 +161,7 @@ class _UpcomingGamesState extends State<UpcomingGames> {
             //  onPressed: () {
             //  Navigator.push(
             //  context,
-            //MaterialPageRoute(builder: (context) => MyApp()),
+            //MaterialPageRoute(builder: (context) => Login()),
             //);
             //}));
           } else {
