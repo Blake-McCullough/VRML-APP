@@ -1,7 +1,7 @@
 import 'package:VRML_APP/profile/profileedittingoptions.dart';
 import 'package:flutter/material.dart';
 
-import 'package:VRML_APP/globalvariables.dart';
+
 import 'package:wheel_chooser/wheel_chooser.dart';
 
 class EditProfile extends StatefulWidget {
@@ -30,8 +30,7 @@ class _EditProfile extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Edit Profile'), backgroundColor: appbarcolor),
-      backgroundColor: colourscheme,
+      appBar: AppBar(title: Text('Edit Profile')),
       body: WheelChooser(
         onValueChanged: (s) => print(s),
         datas: timezoneOptions,

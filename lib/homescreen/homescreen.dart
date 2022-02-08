@@ -8,7 +8,6 @@ import 'package:VRML_APP/settings/settings.dart';
 
 import 'package:flutter/material.dart';
 
-import 'package:VRML_APP/globalvariables.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class PersistantBar extends StatefulWidget {
@@ -38,30 +37,30 @@ class _PersistantBar extends State<PersistantBar> {
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.person),
-        title: ("Profile"),
-        activeColorPrimary: iconcolor,
-      ),
+          icon: Icon(Icons.person),
+          title: ("Profile"),
+          activeColorPrimary: Color.fromRGBO(4, 218, 198, 1),
+          inactiveColorPrimary: Color.fromRGBO(255, 255, 255, 1)),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.search),
-        title: ("Search"),
-        activeColorPrimary: iconcolor,
-      ),
+          icon: Icon(Icons.search),
+          title: ("Search"),
+          activeColorPrimary: Color.fromRGBO(4, 218, 198, 1),
+          inactiveColorPrimary: Color.fromRGBO(255, 255, 255, 1)),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.home),
-        title: ("Home"),
-        activeColorPrimary: iconcolor,
-      ),
+          icon: Icon(Icons.home),
+          title: ("Home"),
+          activeColorPrimary: Color.fromRGBO(4, 218, 198, 1),
+          inactiveColorPrimary: Color.fromRGBO(255, 255, 255, 1)),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.leaderboard),
-        title: ("Leaderboard"),
-        activeColorPrimary: iconcolor,
-      ),
+          icon: Icon(Icons.leaderboard),
+          title: ("Leaderboard"),
+          activeColorPrimary: Color.fromRGBO(4, 218, 198, 1),
+          inactiveColorPrimary: Color.fromRGBO(255, 255, 255, 1)),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.settings),
-        title: ("Settings"),
-        activeColorPrimary: iconcolor,
-      ),
+          icon: Icon(Icons.settings),
+          title: ("Settings"),
+          activeColorPrimary: Color.fromRGBO(4, 218, 198, 1),
+          inactiveColorPrimary: Color.fromRGBO(255, 255, 255, 1)),
     ];
   }
 
@@ -73,7 +72,8 @@ class _PersistantBar extends State<PersistantBar> {
       screens: _buildScreens(),
       items: _navBarsItems(),
       confineInSafeArea: true,
-      backgroundColor: appbarcolor, // Default is Colors.white.
+      backgroundColor:
+          Color.fromRGBO(55, 0, 179, 1), // Default is Colors.white.
       handleAndroidBackButtonPress: true, // Default is true.
       resizeToAvoidBottomInset:
           true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
@@ -129,10 +129,9 @@ class _MainScreen extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text('Home'),
-          automaticallyImplyLeading: false,
-          backgroundColor: appbarcolor),
-      backgroundColor: colourscheme,
+        title: Text('Home'),
+        automaticallyImplyLeading: false,
+      ),
       body: Container(
         child: Center(
           child: Column(
@@ -143,51 +142,35 @@ class _MainScreen extends State<MainScreen> {
               ),
               Text(
                 'HOME',
-                style: TextStyle(
-                  color: textcolour,
-                ),
+                style: TextStyle(),
               ),
               Text(
                 'Made By Blake McCullough',
-                style: TextStyle(
-                  color: textcolour,
-                ),
+                style: TextStyle(),
               ),
               Text(
                 'Discord - Spoiled_Kitten#4911',
-                style: TextStyle(
-                  color: textcolour,
-                ),
+                style: TextStyle(),
               ),
               Text(
                 'https://github.com/Blake-McCullough/',
-                style: TextStyle(
-                  color: textcolour,
-                ),
+                style: TextStyle(),
               ),
               Text(
                 'privblakemccullough@protonmail.com',
-                style: TextStyle(
-                  color: textcolour,
-                ),
+                style: TextStyle(),
               ),
               Text(
                 'This is the alpha release :)',
-                style: TextStyle(
-                  color: textcolour,
-                ),
+                style: TextStyle(),
               ),
               Text(
                 'Found a bug or have a recommendation?',
-                style: TextStyle(
-                  color: textcolour,
-                ),
+                style: TextStyle(),
               ),
               Text(
                 'Message me on discord!',
-                style: TextStyle(
-                  color: textcolour,
-                ),
+                style: TextStyle(),
               ),
               Center(
                 child: Padding(
@@ -211,9 +194,7 @@ class _MainScreen extends State<MainScreen> {
                           'THE LATEST NEWS UPDATE WILL BE HERE!',
                           softWrap: true,
                           overflow: TextOverflow.fade,
-                          style: TextStyle(
-                            color: textcolour,
-                          ),
+                          style: TextStyle(),
                         ),
                       ),
                     ],

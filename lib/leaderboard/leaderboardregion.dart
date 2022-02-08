@@ -1,4 +1,3 @@
-import 'package:VRML_APP/globalvariables.dart';
 import 'package:VRML_APP/leaderboard/leaderboardresult.dart';
 
 import 'package:flutter/material.dart';
@@ -20,9 +19,7 @@ class _Leaderboardregion extends State<Leaderboardregion> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text('Leaderboard Region'), backgroundColor: appbarcolor),
-      backgroundColor: colourscheme,
+      appBar: AppBar(title: Text('Leaderboard Region')),
       body: FutureBuilder<Map<String, dynamic>>(
         builder: (context, snapshot) {
           return ListView(
@@ -44,10 +41,9 @@ class _Leaderboardregion extends State<Leaderboardregion> {
                   },
                   child: Text(
                     'Global',
-                    style: TextStyle(color: buttontextcolour, fontSize: 20),
+                    style: TextStyle(fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: buttoncolour,
                       fixedSize: const Size(200, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
@@ -69,10 +65,9 @@ class _Leaderboardregion extends State<Leaderboardregion> {
                   },
                   child: Text(
                     'OCE',
-                    style: TextStyle(color: buttontextcolour, fontSize: 20),
+                    style: TextStyle(fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: buttoncolour,
                       fixedSize: const Size(200, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
@@ -94,10 +89,9 @@ class _Leaderboardregion extends State<Leaderboardregion> {
                   },
                   child: Text(
                     'NA',
-                    style: TextStyle(color: buttontextcolour, fontSize: 20),
+                    style: TextStyle(fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: buttoncolour,
                       fixedSize: const Size(200, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
@@ -119,10 +113,9 @@ class _Leaderboardregion extends State<Leaderboardregion> {
                   },
                   child: Text(
                     'EU',
-                    style: TextStyle(color: buttontextcolour, fontSize: 20),
+                    style: TextStyle(fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: buttoncolour,
                       fixedSize: const Size(200, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),

@@ -1,14 +1,31 @@
-import 'package:VRML_APP/main.dart';
-import 'package:VRML_APP/profile/editprofile.dart';
-import 'package:VRML_APP/profile/userhttp.dart';
+import 'dart:convert';
+
+import 'dart:math';
+
+import 'package:VRML_APP/upcoming-games/upcominggames.dart';
+import 'package:VRML_APP/upcoming-games/upcominggameshttp.dart';
 import 'package:flutter/material.dart';
-import 'package:vertical_picker/vertical_picker.dart';
-import 'package:VRML_APP/globalvariables.dart';
-import 'package:wheel_chooser/wheel_chooser.dart';
-import 'package:VRML_APP/loginpage.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_web_auth/flutter_web_auth.dart';
+
+import 'package:http/http.dart' as http;
+
+import 'package:VRML_APP/profile/userhttp.dart';
 
 String? teamname;
 final host = 'https://vrmasterleague.com';
+var token;
+final _client = http.Client();
+var returnedresult;
+Codec<String, String> stringToBase64 = utf8.fuse(base64);
+var tokencode;
+String hashvalue = '';
+var code;
+var codeverifier;
+const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+Random _rnd = Random();
+String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
+    length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
 
 //CREATES THE PROFILE CRAP
 class Profile extends StatefulWidget {
@@ -22,16 +39,79 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   Future<Map<String, dynamic>> profileJson = getUserDetails();
+  String _status = 'Not-Signed-In';
+  void resetme() async {
+    setState(() {
+      profileJson = getUserDetails();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  void authenticate() async {
+    final codeverifier = getRandomString(128);
+
+    print(codeverifier);
+
+    // ignore: unused_local_variable
+    final url =
+        'https://35.189.15.82/verifierencrypt?codeverifier=' + codeverifier;
+    print(url);
+
+    final callbackUrlScheme = 'foobar';
+
+    try {
+      final result = await FlutterWebAuth.authenticate(
+          url: url, callbackUrlScheme: callbackUrlScheme);
+      print(result);
+      code = result.substring(22);
+      print(code);
+      setState(() {
+        _status = 'Success!';
+
+        code = code;
+      });
+
+      final msg = jsonEncode({
+        "grant_type": "authorization_code",
+        "client_id": "06971b36-1de1-4607-87f0-1b915f4a03c3",
+        "redirect_uri": "https://35.189.15.82",
+        "code": code.toString(),
+        "code_verifier": codeverifier.toString(),
+      });
+      Map<String, String> headers = {'Content-Type': 'application/json'};
+      print(msg);
+      final daresponse = await _client.post(
+          Uri.parse('https://api.vrmasterleague.com/User/token/'),
+          headers: headers,
+          body: msg);
+
+      print(daresponse.body);
+      if (daresponse.statusCode == 200) {
+        Map<String, dynamic> parsedJsonToken = jsonDecode(daresponse.body);
+        token = parsedJsonToken['access_token'];
+
+        print(token);
+      }
+      resetme();
+    } on PlatformException catch (e) {
+      setState(() {
+        profileJson = getUserDetails();
+        _status = 'Got error: $e';
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile'),
-        backgroundColor: appbarcolor,
         automaticallyImplyLeading: false,
       ),
-      backgroundColor: colourscheme,
       body: FutureBuilder<Map<String, dynamic>>(
         future: profileJson,
         builder: (context, snapshot) {
@@ -55,12 +135,8 @@ class _ProfileState extends State<Profile> {
                     Text('Username:',
                         style: TextStyle(
                             fontSize: 20,
-                            color: textcolour,
                             decoration: TextDecoration.underline)),
-                    Text(snapshot.data!['username'],
-                        style: TextStyle(
-                          color: textcolour,
-                        ))
+                    Text(snapshot.data!['username'], style: TextStyle())
                   ],
                 ),
                 Container(
@@ -78,23 +154,17 @@ class _ProfileState extends State<Profile> {
                                 Text('Timezone:',
                                     style: TextStyle(
                                         fontSize: 20,
-                                        color: textcolour,
                                         decoration: TextDecoration.underline)),
                                 Text(snapshot.data!['timezone'],
-                                    style: TextStyle(
-                                      color: textcolour,
-                                    )),
+                                    style: TextStyle()),
                               ]),
                               Column(children: [
                                 Text('Country:',
                                     style: TextStyle(
                                         fontSize: 20,
-                                        color: textcolour,
                                         decoration: TextDecoration.underline)),
                                 Text(snapshot.data!['country'],
-                                    style: TextStyle(
-                                      color: textcolour,
-                                    ))
+                                    style: TextStyle())
                               ]),
                             ],
                           ),
@@ -106,29 +176,45 @@ class _ProfileState extends State<Profile> {
                               Text('Discord:',
                                   style: TextStyle(
                                       fontSize: 20,
-                                      color: textcolour,
                                       decoration: TextDecoration.underline)),
                               Text(snapshot.data!['discordTag'],
-                                  style: TextStyle(
-                                    color: textcolour,
-                                  ))
+                                  style: TextStyle())
                             ],
                           ),
                           SizedBox(
                             height: 30.0,
                           ),
                           ElevatedButton(
+                              child: Text(
+                                'Upcoming Games',
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  fixedSize: const Size(210, 70),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(50))),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => UpcomingGames()),
+                                );
+                              }),
+                          SizedBox(
+                            height: 30.0,
+                          ),
+                          ElevatedButton(
                             child: Text(
                               'Edit Profile (N/A)',
-                              style: TextStyle(
-                                  color: buttontextcolour, fontSize: 20),
+                              style: TextStyle(fontSize: 20),
                             ),
                             style: ElevatedButton.styleFrom(
-                                primary: buttoncolour,
                                 fixedSize: const Size(210, 70),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50))),
-                            onPressed: () {},
+                            onPressed: () {
+                              getcurrentgamesnotification();
+                            },
                           ),
                         ])),
                 SizedBox(
@@ -150,12 +236,10 @@ class _ProfileState extends State<Profile> {
                     Text('You must sign-in',
                         style: TextStyle(
                             fontSize: 30,
-                            color: textcolour,
                             decoration: TextDecoration.underline)),
                     Text(' to see this',
                         style: TextStyle(
                             fontSize: 30,
-                            color: textcolour,
                             decoration: TextDecoration.underline)),
                     SizedBox(
                       height: 10,
@@ -163,29 +247,15 @@ class _ProfileState extends State<Profile> {
                     Center(
                       child: ElevatedButton(
                         child: Text(
-                          'Signin',
-                          style:
-                              TextStyle(color: buttontextcolour, fontSize: 20),
+                          'Sign In',
+                          style: TextStyle(fontSize: 20),
                         ),
                         style: ElevatedButton.styleFrom(
-                            primary: buttoncolour,
                             fixedSize: const Size(210, 70),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50))),
                         onPressed: () async {
-                          final reLoadPage = await Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Login()),
-                          );
-                          if (reLoadPage == null) {
-                            setState(() {
-                              profileJson = getUserDetails();
-                            });
-                          } else if (reLoadPage) {
-                            setState(() {
-                              profileJson = getUserDetails();
-                            });
-                          }
+                          this.authenticate();
                         },
                       ),
                     ),

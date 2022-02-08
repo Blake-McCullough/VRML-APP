@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:VRML_APP/globalvariables.dart';
 import 'package:VRML_APP/leaderboard/leaderboard.dart';
 import 'package:VRML_APP/upcoming-games/upcominggameshttp.dart';
 
@@ -52,16 +51,60 @@ class MyApp extends StatefulWidget {
       context.findAncestorStateOfType<_MyAppState>();
 }
 
+Map<int, Color> primarycolor = {
+  50: Color.fromRGBO(98, 0, 238, .1),
+  100: Color.fromRGBO(98, 0, 238, .2),
+  200: Color.fromRGBO(98, 0, 238, .3),
+  300: Color.fromRGBO(98, 0, 238, .4),
+  400: Color.fromRGBO(98, 0, 238, .5),
+  500: Color.fromRGBO(98, 0, 238, .6),
+  600: Color.fromRGBO(98, 0, 238, .7),
+  700: Color.fromRGBO(98, 0, 238, .8),
+  800: Color.fromRGBO(98, 0, 238, .9),
+  900: Color.fromRGBO(98, 0, 238, 1),
+};
+Map<int, Color> primarydarkcolor = {
+  50: Color.fromRGBO(187, 134, 252, .1),
+  100: Color.fromRGBO(187, 134, 252, .2),
+  200: Color.fromRGBO(187, 134, 252, .3),
+  300: Color.fromRGBO(187, 134, 252, .4),
+  400: Color.fromRGBO(187, 134, 252, .5),
+  500: Color.fromRGBO(187, 134, 252, .6),
+  600: Color.fromRGBO(187, 134, 252, .7),
+  700: Color.fromRGBO(187, 134, 252, .8),
+  800: Color.fromRGBO(187, 134, 252, .9),
+  900: Color.fromRGBO(187, 134, 252, 1),
+};
+MaterialColor primarycolourscheme = MaterialColor(0xFF6200EE, primarycolor);
+MaterialColor primarydarkcolourscheme = MaterialColor(0xFFBB86FC, primarycolor);
+
 class _MyAppState extends State<MyApp> {
   /// 1) our themeMode "state" field
-  ThemeMode _themeMode = ThemeMode.system;
+  ThemeMode _themeMode = ThemeMode.dark;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(),
-      darkTheme: ThemeData.dark(),
+      title: 'Flutter',
+      theme: ThemeData(
+          primarySwatch: primarycolourscheme,
+          primaryColor: Color.fromRGBO(229, 229, 229, 1),
+          brightness: Brightness.light,
+          backgroundColor: const Color(0xFFFFFF),
+          dividerColor: Colors.white54,
+          appBarTheme: AppBarTheme(
+            color: Color.fromRGBO(55, 0, 179, 1),
+          )),
+      darkTheme: ThemeData(
+          primarySwatch: primarydarkcolourscheme,
+          primaryColor: Color.fromRGBO(30, 30, 30, 1),
+          brightness: Brightness.dark,
+          backgroundColor: const Color(0xFF121212),
+          dividerColor: Colors.black12,
+          appBarTheme: AppBarTheme(
+            color: Color.fromRGBO(55, 0, 179, 1),
+          )),
+
       themeMode: _themeMode, // 2) ← ← ← use "state" field here //////////////
       home: PersistantBar(),
     );

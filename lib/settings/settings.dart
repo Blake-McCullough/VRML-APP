@@ -2,7 +2,7 @@ import 'package:VRML_APP/main.dart';
 import 'package:VRML_APP/upcoming-games/upcominggames.dart';
 import 'package:flutter/material.dart';
 
-import 'package:VRML_APP/globalvariables.dart';
+bool _darkModeEnabled = true;
 
 // Define a custom Form widget.
 class Settings extends StatefulWidget {
@@ -44,94 +44,65 @@ class _Settings extends State<Settings> {
               ),
               Text(
                 'SETTINGS',
-                style: TextStyle(
-                  color: textcolour,
-                ),
+                style: TextStyle(),
               ),
               Text(
                 'Made By Blake McCullough',
-                style: TextStyle(
-                  color: textcolour,
-                ),
+                style: TextStyle(),
               ),
               Text(
                 'Discord - Spoiled_Kitten#4911',
-                style: TextStyle(
-                  color: textcolour,
-                ),
+                style: TextStyle(),
               ),
               Text(
                 'https://github.com/Blake-McCullough/',
-                style: TextStyle(
-                  color: textcolour,
-                ),
+                style: TextStyle(),
               ),
               Text(
                 'privblakemccullough@protonmail.com',
-                style: TextStyle(
-                  color: textcolour,
-                ),
+                style: TextStyle(),
               ),
               Text(
                 'This is the alpha release :)',
-                style: TextStyle(
-                  color: textcolour,
-                ),
+                style: TextStyle(),
               ),
               Text(
                 'Found a bug or have a recommendation?',
-                style: TextStyle(
-                  color: textcolour,
-                ),
+                style: TextStyle(),
               ),
               Text(
                 'Message me on discord!',
-                style: TextStyle(
-                  color: textcolour,
-                ),
+                style: TextStyle(),
               ),
-              ElevatedButton(
-                  child: Text(
-                    'Upcoming Games',
-                    style: TextStyle(color: buttontextcolour, fontSize: 20),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      primary: buttoncolour,
-                      fixedSize: const Size(210, 70),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50))),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => UpcomingGames()),
-                    );
-                  }),
-              ElevatedButton(
-                  child: Text(
-                    'Dark Mode',
-                    style: TextStyle(color: buttontextcolour, fontSize: 20),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      primary: buttoncolour,
-                      fixedSize: const Size(210, 70),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50))),
-                  onPressed: () {
-                    MyApp.of(context)!.changeTheme(ThemeMode.dark);
-                  }),
-              ElevatedButton(
-                  child: Text(
-                    'Light Mode',
-                    style: TextStyle(color: buttontextcolour, fontSize: 20),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      primary: buttoncolour,
-                      fixedSize: const Size(210, 70),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50))),
-                  onPressed: () {
-                    MyApp.of(context)!.changeTheme(ThemeMode.light);
-                  }),
+              Transform.translate(
+                  offset: Offset(112.0, 0.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Dark or light mode?',
+                        style: TextStyle(),
+                      ),
+                      Switch(
+                          activeTrackColor: Color.fromRGBO(187, 134, 252, 1),
+                          activeColor: Color.fromRGBO(98, 0, 238, 1),
+                          value: _darkModeEnabled,
+                          onChanged: (val) {
+                            setState(() {
+                              final ThemeData theme = Theme.of(context);
+                              theme.brightness == Brightness.dark
+                                  ? _darkModeEnabled = true
+                                  : _darkModeEnabled = false;
+                              _darkModeEnabled = val;
+                              if (val) {
+                                MyApp.of(context)!.changeTheme(ThemeMode.dark);
+                              } else {
+                                MyApp.of(context)!.changeTheme(ThemeMode.light);
+                              }
+                            });
+                            print(themeText);
+                          }),
+                    ],
+                  ))
             ],
           ),
         ),
@@ -139,3 +110,5 @@ class _Settings extends State<Settings> {
     );
   }
 }
+
+var themeText;

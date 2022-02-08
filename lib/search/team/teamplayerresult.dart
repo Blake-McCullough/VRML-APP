@@ -1,8 +1,8 @@
 import 'package:VRML_APP/main.dart';
 import 'package:VRML_APP/search/team/teamhttp.dart';
-import 'package:VRML_APP/globalvariables.dart';
-import 'package:VRML_APP/loginpage.dart';
+
 import 'package:flutter/material.dart';
+import 'package:VRML_APP/profile/profile.dart';
 
 class TeamPlayerResults extends StatefulWidget {
   final String teamID;
@@ -22,8 +22,9 @@ class _TeamPlayerResultsState extends State<TeamPlayerResults> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Team Members'), backgroundColor: appbarcolor),
-      backgroundColor: colourscheme,
+      appBar: AppBar(
+        title: Text('Team Members'),
+      ),
       body: FutureBuilder<Map<String, dynamic>>(
         future: parJson,
         builder: (context, snapshot) {
@@ -45,7 +46,7 @@ class _TeamPlayerResultsState extends State<TeamPlayerResults> {
                             bottom: 4, left: 4, right: 4, top: 4),
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Color.fromRGBO(208, 189, 244, 0.5),
+                          color: Theme.of(context).primaryColor,
                           borderRadius: BorderRadius.all(Radius.circular(20))),
                       child: Column(
                         children: [
@@ -65,13 +66,11 @@ class _TeamPlayerResultsState extends State<TeamPlayerResults> {
                             children: [
                               Text('Name',
                                   style: TextStyle(
-                                      color: textcolour,
+                                      fontWeight: FontWeight.bold,
                                       decoration: TextDecoration.underline)),
                               Text(
                                 snapshot.data!['players'][index]['name'],
-                                style: TextStyle(
-                                  color: textcolour,
-                                ),
+                                style: TextStyle(),
                               ),
                             ],
                           ),
@@ -79,13 +78,11 @@ class _TeamPlayerResultsState extends State<TeamPlayerResults> {
                             children: [
                               Text('Role',
                                   style: TextStyle(
-                                      color: textcolour,
+                                      fontWeight: FontWeight.bold,
                                       decoration: TextDecoration.underline)),
                               Text(
                                 snapshot.data!['players'][index]['role'],
-                                style: TextStyle(
-                                  color: textcolour,
-                                ),
+                                style: TextStyle(),
                               ),
                             ],
                           ),
@@ -93,13 +90,11 @@ class _TeamPlayerResultsState extends State<TeamPlayerResults> {
                             children: [
                               const Text('Country',
                                   style: TextStyle(
-                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
                                       decoration: TextDecoration.underline)),
                               Text(
                                 snapshot.data!['players'][index]['country'],
-                                style: TextStyle(
-                                  color: textcolour,
-                                ),
+                                style: TextStyle(),
                               ),
                             ],
                           ),

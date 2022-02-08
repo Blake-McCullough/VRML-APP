@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:VRML_APP/loginpage.dart';
-import 'package:VRML_APP/globalvariables.dart';
+
 import 'package:VRML_APP/homescreen/homescreen.dart';
 import 'package:VRML_APP/leaderboard/leaderboardhttp.dart';
 import 'package:VRML_APP/main.dart';
 import 'package:VRML_APP/search/team/teamidresult.dart';
+import 'package:VRML_APP/profile/profile.dart';
 
 //CREATES THE SearchResults CRAP
 class LeaderboardResults extends StatefulWidget {
@@ -33,8 +33,7 @@ class _LeaderboardResultsState extends State<LeaderboardResults> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(leaderboard), backgroundColor: appbarcolor),
-      backgroundColor: colourscheme,
+      appBar: AppBar(title: Text(leaderboard)),
       body: FutureBuilder<String>(
         future: parJson,
         builder: (context, snapshot) {

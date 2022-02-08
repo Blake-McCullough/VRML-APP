@@ -1,4 +1,3 @@
-import 'package:VRML_APP/globalvariables.dart';
 import 'package:VRML_APP/leaderboard/leaderboardregion.dart';
 import 'package:VRML_APP/main.dart';
 
@@ -43,10 +42,9 @@ class _Leaderboard extends State<Leaderboard> {
                   },
                   child: Text(
                     'Onward',
-                    style: TextStyle(color: buttontextcolour, fontSize: 20),
+                    style: TextStyle(fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: buttoncolour,
                       fixedSize: const Size(200, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
@@ -68,10 +66,9 @@ class _Leaderboard extends State<Leaderboard> {
                   },
                   child: Text(
                     'Echo Arena',
-                    style: TextStyle(color: buttontextcolour, fontSize: 20),
+                    style: TextStyle(fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: buttoncolour,
                       fixedSize: const Size(200, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
@@ -93,10 +90,9 @@ class _Leaderboard extends State<Leaderboard> {
                   },
                   child: Text(
                     'Pavlov',
-                    style: TextStyle(color: buttontextcolour, fontSize: 20),
+                    style: TextStyle(fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: buttoncolour,
                       fixedSize: const Size(200, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
@@ -118,10 +114,9 @@ class _Leaderboard extends State<Leaderboard> {
                   },
                   child: Text(
                     'SnapShot',
-                    style: TextStyle(color: buttontextcolour, fontSize: 20),
+                    style: TextStyle(fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: buttoncolour,
                       fixedSize: const Size(200, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),

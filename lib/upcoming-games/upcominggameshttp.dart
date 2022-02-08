@@ -1,10 +1,9 @@
 import 'dart:convert';
 import 'dart:core';
 
-import 'package:VRML_APP/loginpage.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:VRML_APP/profile/profile.dart';
 import 'package:intl/intl.dart';
 import 'package:timezone/timezone.dart' as tz;
 
@@ -91,7 +90,8 @@ Future<String> getcurrentgamesnotification() async {
           var timenotify = tz.TZDateTime.from(createdDate, tz.local);
           print(timenotify);
           print('-------------');
-          if (createdDate.isAfter(DateTime.now().subtract(Duration(days: 1)))) {
+
+          if (createdDate.isAfter(DateTime.now().subtract(Duration(days: 0)))) {
             print('itslater$createdDate');
 
             await flutterLocalNotificationsPlugin.zonedSchedule(

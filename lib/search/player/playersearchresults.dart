@@ -2,7 +2,6 @@ import 'package:VRML_APP/search/player/playerhttp.dart';
 
 import 'package:VRML_APP/homescreen/homescreen.dart';
 
-import 'package:VRML_APP/globalvariables.dart';
 import 'package:VRML_APP/upcoming-games/upcominggames.dart';
 
 import 'package:flutter/material.dart';
@@ -31,8 +30,9 @@ class _PlayerSearchResultsState extends State<PlayerSearchResults> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(playersearch), backgroundColor: appbarcolor),
-      backgroundColor: colourscheme,
+      appBar: AppBar(
+        title: Text(playersearch),
+      ),
       body: FutureBuilder<List<Map<String, dynamic>>>(
         future: parJson,
         builder: (context, snapshot) {

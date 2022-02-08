@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:VRML_APP/globalvariables.dart';
-
 import 'playersearchresults.dart';
 
 class Searchplayers extends StatefulWidget {
@@ -30,9 +28,9 @@ class _Searchplayers extends State<Searchplayers> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppBar(title: Text('Player Search'), backgroundColor: appbarcolor),
-      backgroundColor: colourscheme,
+      appBar: AppBar(
+        title: Text('Player Search'),
+      ),
       body: Container(
         child: Center(
           child: Column(
@@ -45,28 +43,30 @@ class _Searchplayers extends State<Searchplayers> {
                 'Search Players',
                 style: TextStyle(
                   fontSize: 30,
-                  color: textcolour,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 30.0, vertical: 20.0),
                 child: TextField(
-                  style: TextStyle(fontSize: 18, color: textcolour),
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
                   decoration: InputDecoration(
-                      hintStyle: TextStyle(color: textcolour),
-                      hintText: "Do not leave me empty!",
-                      focusColor: textcolour),
+                    hintStyle: TextStyle(
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                    hintText: "Do not leave me empty!",
+                  ),
                   controller: myController,
                 ),
               ),
               ElevatedButton(
                   child: Text(
                     'Search Echo Arena',
-                    style: TextStyle(color: buttontextcolour, fontSize: 20),
+                    style: TextStyle(fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: buttoncolour,
                       fixedSize: const Size(210, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
@@ -88,10 +88,9 @@ class _Searchplayers extends State<Searchplayers> {
               ElevatedButton(
                   child: Text(
                     'Search Onward',
-                    style: TextStyle(color: buttontextcolour, fontSize: 20),
+                    style: TextStyle(fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: buttoncolour,
                       fixedSize: const Size(210, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
@@ -113,10 +112,9 @@ class _Searchplayers extends State<Searchplayers> {
               ElevatedButton(
                   child: Text(
                     'Search Snapshot',
-                    style: TextStyle(color: buttontextcolour, fontSize: 20),
+                    style: TextStyle(fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: buttoncolour,
                       fixedSize: const Size(210, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
@@ -138,10 +136,9 @@ class _Searchplayers extends State<Searchplayers> {
               ElevatedButton(
                   child: Text(
                     'Search Pavlov',
-                    style: TextStyle(color: buttontextcolour, fontSize: 20),
+                    style: TextStyle(fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: buttoncolour,
                       fixedSize: const Size(210, 70),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),

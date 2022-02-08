@@ -3,9 +3,9 @@ import 'package:VRML_APP/main.dart';
 
 import 'package:VRML_APP/search/team/teamhttp.dart';
 import 'package:VRML_APP/search/team/teamidresult.dart';
-import 'package:VRML_APP/globalvariables.dart';
-import 'package:VRML_APP/loginpage.dart';
+
 import 'package:flutter/material.dart';
+import 'package:VRML_APP/profile/profile.dart';
 
 class TeamSearchResults extends StatefulWidget {
   final String userinput;
@@ -31,8 +31,9 @@ class _TeamSearchResultsState extends State<TeamSearchResults> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(playersearch), backgroundColor: appbarcolor),
-      backgroundColor: colourscheme,
+      appBar: AppBar(
+        title: Text(playersearch),
+      ),
       body: FutureBuilder<List<Map<String, dynamic>>>(
         future: parJson,
         builder: (context, snapshot) {

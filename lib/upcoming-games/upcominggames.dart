@@ -1,14 +1,12 @@
 import 'dart:convert';
 
-import 'package:VRML_APP/loginpage.dart';
 import 'package:VRML_APP/main.dart';
 
 import 'package:VRML_APP/search/team/teamidresult.dart';
 import 'package:VRML_APP/upcoming-games/upcominggameshttp.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
-import 'package:VRML_APP/globalvariables.dart';
+import 'package:VRML_APP/profile/profile.dart';
 
 String? teamname;
 final host = 'https://vrmasterleague.com';
@@ -29,9 +27,9 @@ class _UpcomingGamesState extends State<UpcomingGames> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppBar(title: Text('UpcomingGames'), backgroundColor: appbarcolor),
-      backgroundColor: colourscheme,
+      appBar: AppBar(
+        title: Text('UpcomingGames'),
+      ),
       body: FutureBuilder<String>(
         future: profileJson,
         builder: (context, snapshot) {
@@ -43,9 +41,7 @@ class _UpcomingGamesState extends State<UpcomingGames> {
               return Center(
                 child: Text(
                   'No Upcoming Games!',
-                  style: TextStyle(
-                    color: textcolour,
-                  ),
+                  style: TextStyle(),
                 ),
               );
             } else {
@@ -63,35 +59,13 @@ class _UpcomingGamesState extends State<UpcomingGames> {
                         dateFormat.format(DateTime.parse(localDate));
                     return Card(
                       child: ListTile(
-                        leading: Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: NetworkImage(host +
-                                    newData['scheduled'][index]['homeTeam']
-                                            ['logo']
-                                        .toString()),
-                                fit: BoxFit.fill),
-                          ),
-                        ),
-                        title: Text(newData['scheduled'][index]['homeTeam']
-                                ['name']
-                            .toString()),
-                        subtitle: Text("Time: " + localformateddate.toString()),
-                        trailing: IconButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => TeamResults(
-                                      teamID: newData['scheduled'][index]
-                                          ['homeTeam']['id'])),
-                            );
-                          },
-                          icon: Icon(Icons.more_vert),
-                        ),
+                        title: Text("Time: " + localformateddate.toString()),
+                        subtitle: Text(newData['scheduled'][index]['homeTeam']
+                                    ['name']
+                                .toString() +
+                            ' VS\n' +
+                            newData['scheduled'][index]['awayTeam']['name']
+                                .toString()),
                       ),
 
                       //SizedBox(width: 20),
@@ -112,12 +86,10 @@ class _UpcomingGamesState extends State<UpcomingGames> {
                     Text('You must sign-in',
                         style: TextStyle(
                             fontSize: 30,
-                            color: textcolour,
                             decoration: TextDecoration.underline)),
                     Text(' to see this',
                         style: TextStyle(
                             fontSize: 30,
-                            color: textcolour,
                             decoration: TextDecoration.underline)),
                     SizedBox(
                       height: 10,
@@ -126,18 +98,16 @@ class _UpcomingGamesState extends State<UpcomingGames> {
                       child: ElevatedButton(
                         child: Text(
                           'Signin',
-                          style:
-                              TextStyle(color: buttontextcolour, fontSize: 20),
+                          style: TextStyle(fontSize: 20),
                         ),
                         style: ElevatedButton.styleFrom(
-                            primary: buttoncolour,
                             fixedSize: const Size(210, 70),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50))),
                         onPressed: () async {
                           final reLoadPage = await Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Login()),
+                            MaterialPageRoute(builder: (context) => Profile()),
                           );
 
                           if (reLoadPage) {

@@ -1,5 +1,3 @@
-import 'package:VRML_APP/globalvariables.dart';
-
 import 'package:VRML_APP/search/player/playersearch.dart';
 import 'package:VRML_APP/search/team/teamsearch.dart';
 
@@ -33,10 +31,9 @@ class _Search extends State<Search> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text('Search'),
-          automaticallyImplyLeading: false,
-          backgroundColor: appbarcolor),
-      backgroundColor: colourscheme,
+        title: Text('Search'),
+        automaticallyImplyLeading: false,
+      ),
       body: Container(
         child: Center(
           child: Column(
@@ -45,13 +42,13 @@ class _Search extends State<Search> {
               Center(
                 child: Text(
                   'Would you like to search for',
-                  style: TextStyle(color: textcolour, fontSize: 20),
+                  style: TextStyle(fontSize: 20),
                 ),
               ),
               Center(
                 child: Text(
                   'Teams or Players?',
-                  style: TextStyle(color: textcolour, fontSize: 20),
+                  style: TextStyle(fontSize: 20),
                 ),
               ),
               SizedBox(
@@ -61,10 +58,9 @@ class _Search extends State<Search> {
                 child: ElevatedButton(
                     child: Text(
                       'Team Search',
-                      style: TextStyle(color: buttontextcolour, fontSize: 20),
+                      style: TextStyle(fontSize: 20),
                     ),
                     style: ElevatedButton.styleFrom(
-                        primary: buttoncolour,
                         fixedSize: const Size(210, 70),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50))),
@@ -82,10 +78,9 @@ class _Search extends State<Search> {
                 child: ElevatedButton(
                     child: Text(
                       'Player Search',
-                      style: TextStyle(color: buttontextcolour, fontSize: 20),
+                      style: TextStyle(fontSize: 20),
                     ),
                     style: ElevatedButton.styleFrom(
-                        primary: buttoncolour,
                         fixedSize: const Size(210, 70),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50))),
