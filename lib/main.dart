@@ -1,20 +1,15 @@
-import 'dart:convert';
-import 'dart:math';
 
-import 'package:VRML_APP/leaderboard/leaderboard.dart';
-import 'package:VRML_APP/upcoming-games/upcominggameshttp.dart';
-
+import 'package:workmanager/workmanager.dart';
 import 'package:VRML_APP/homescreen/homescreen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_material_pickers/main.dart';
-import 'package:flutter_web_auth/flutter_web_auth.dart';
+
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:http/http.dart' as http;
+
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:flutter_native_timezone/flutter_native_timezone.dart';
+
 
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -37,7 +32,7 @@ Future<void> main() async {
   tz.initializeTimeZones();
   final String localTimeZone = await FlutterNativeTimezone.getLocalTimezone();
   tz.setLocalLocation(tz.getLocation(localTimeZone));
-
+  
   runApp(MyApp());
 }
 
