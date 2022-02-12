@@ -63,7 +63,7 @@ class _Searchplayers extends State<Searchplayers> {
               ),
               ElevatedButton(
                   child: Text(
-                    'Search Echo Arena',
+                    'Search For Players!',
                     style: TextStyle(fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
@@ -76,7 +76,6 @@ class _Searchplayers extends State<Searchplayers> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => PlayerSearchResults(
-                                  game: 'EchoArena',
                                   userinput: myController.text,
                                 )),
                       );
@@ -85,73 +84,6 @@ class _Searchplayers extends State<Searchplayers> {
               SizedBox(
                 height: 50.0,
               ),
-              ElevatedButton(
-                  child: Text(
-                    'Search Onward',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(210, 70),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50))),
-                  onPressed: () {
-                    if (myController.text.isNotEmpty) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => PlayerSearchResults(
-                                  game: 'Onward',
-                                  userinput: myController.text,
-                                )),
-                      );
-                    }
-                  }),
-              SizedBox(
-                height: 50.0,
-              ),
-              ElevatedButton(
-                  child: Text(
-                    'Search Snapshot',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(210, 70),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50))),
-                  onPressed: () {
-                    if (myController.text.isNotEmpty) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => PlayerSearchResults(
-                                  game: 'SnapShot',
-                                  userinput: myController.text,
-                                )),
-                      );
-                    }
-                  }),
-              SizedBox(
-                height: 50.0,
-              ),
-              ElevatedButton(
-                  child: Text(
-                    'Search Pavlov',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(210, 70),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50))),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => PlayerSearchResults(
-                                game: 'Pavlov',
-                                userinput: myController.text,
-                              )),
-                    );
-                  }),
             ],
           ),
         ),

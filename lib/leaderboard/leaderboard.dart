@@ -1,5 +1,4 @@
 import 'package:VRML_APP/leaderboard/leaderboardregion.dart';
-import 'package:VRML_APP/main.dart';
 
 import 'package:flutter/material.dart';
 

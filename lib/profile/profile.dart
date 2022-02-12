@@ -85,18 +85,24 @@ class _ProfileState extends State<Profile> {
       Map<String, String> headers = {'Content-Type': 'application/json'};
       print(msg);
       final daresponse = await _client.post(
-          Uri.parse('https://api.vrmasterleague.com/User/token/'),
+          Uri.parse('https://api.vrmasterleague.com/Users/token/'),
           headers: headers,
           body: msg);
-
+      print('awaitingapi');
       print(daresponse.body);
+      print(daresponse.statusCode);
       if (daresponse.statusCode == 200) {
         Map<String, dynamic> parsedJsonToken = jsonDecode(daresponse.body);
         token = parsedJsonToken['access_token'];
-
+        setState(() {
+          token = token;
+        });
+        setState(() {
+          profileJson = getUserDetails();
+        });
         print(token);
+        resetme();
       }
-      resetme();
     } on PlatformException catch (e) {
       setState(() {
         profileJson = getUserDetails();
@@ -126,18 +132,36 @@ class _ProfileState extends State<Profile> {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        image: NetworkImage(host + snapshot.data!['logo']),
+                        image: NetworkImage(host + snapshot.data!['userLogo']),
                         fit: BoxFit.fill),
                   ),
                 ),
-                Column(
-                  children: [
-                    Text('Username:',
-                        style: TextStyle(
-                            fontSize: 20,
-                            decoration: TextDecoration.underline)),
-                    Text(snapshot.data!['username'], style: TextStyle())
-                  ],
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment
+                        .center, //Center Row contents horizontally,
+                    crossAxisAlignment:
+                        CrossAxisAlignment.center, //Center Row contents ve
+                    children: [
+                      Column(children: [
+                        Text('Username:',
+                            style: TextStyle(
+                                fontSize: 20,
+                                decoration: TextDecoration.underline)),
+                        Text(snapshot.data!['userName'], style: TextStyle()),
+                      ]),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Column(children: [
+                        Text('Discord:',
+                            style: TextStyle(
+                                fontSize: 20,
+                                decoration: TextDecoration.underline)),
+                        Text(snapshot.data!['discordTag'], style: TextStyle())
+                      ]),
+                    ],
+                  ),
                 ),
                 Container(
                     padding: const EdgeInsets.all(20),
@@ -155,9 +179,12 @@ class _ProfileState extends State<Profile> {
                                     style: TextStyle(
                                         fontSize: 20,
                                         decoration: TextDecoration.underline)),
-                                Text(snapshot.data!['timezone'],
+                                Text(snapshot.data!['timezoneID'],
                                     style: TextStyle()),
                               ]),
+                              SizedBox(
+                                width: 20,
+                              ),
                               Column(children: [
                                 Text('Country:',
                                     style: TextStyle(
@@ -173,11 +200,11 @@ class _ProfileState extends State<Profile> {
                           ),
                           Column(
                             children: [
-                              Text('Discord:',
+                              Text('Date Joined UTC:',
                                   style: TextStyle(
                                       fontSize: 20,
                                       decoration: TextDecoration.underline)),
-                              Text(snapshot.data!['discordTag'],
+                              Text(snapshot.data!['dateJoinedUTC'],
                                   style: TextStyle())
                             ],
                           ),
@@ -186,20 +213,14 @@ class _ProfileState extends State<Profile> {
                           ),
                           ElevatedButton(
                               child: Text(
-                                'Upcoming Games',
+                                'Upcoming Games N/A',
                                 style: TextStyle(fontSize: 20),
                               ),
                               style: ElevatedButton.styleFrom(
                                   fixedSize: const Size(210, 70),
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(50))),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => UpcomingGames()),
-                                );
-                              }),
+                              onPressed: () {}),
                           SizedBox(
                             height: 30.0,
                           ),
@@ -212,9 +233,7 @@ class _ProfileState extends State<Profile> {
                                 fixedSize: const Size(210, 70),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50))),
-                            onPressed: () {
-                              getcurrentgamesnotification();
-                            },
+                            onPressed: () {},
                           ),
                         ])),
                 SizedBox(

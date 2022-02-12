@@ -20,6 +20,7 @@ Future<List<Map<String, dynamic>>> getTeamSearch(
   decodedResponse = (json.decode(response.body) as List<dynamic>)
       .map((e) => e as Map<String, dynamic>)
       .toList();
+  print(response);
   return decodedResponse;
 }
 
@@ -33,15 +34,14 @@ Future<Map<String, dynamic>> getTeamSearchID(String teamID) async {
     Uri.parse(urlsearch),
   );
   print(response);
-
+  print(response.body);
   var data = jsonDecode(response.body);
   return data;
 }
 
 Future<Map<String, dynamic>> getTeamPlayerSearchID(String teamID) async {
   //Gets the json for the users info
-  String urlsearch =
-      'https://api.vrmasterleague.com/Teams/' + teamID + '/players/';
+  String urlsearch = 'https://api.vrmasterleague.com/Teams/' + teamID;
 
   print(urlsearch);
 

@@ -1,4 +1,3 @@
-import 'package:VRML_APP/main.dart';
 import 'package:VRML_APP/search/team/teamhttp.dart';
 
 import 'teamplayerresult.dart';
@@ -37,7 +36,8 @@ class _TeamResultsState extends State<TeamResults> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                      image: NetworkImage(host + snapshot.data!['logo']),
+                      image: NetworkImage(
+                          host + snapshot.data!['team']['teamLogo']),
                       fit: BoxFit.fill),
                 ),
               ),
@@ -48,7 +48,7 @@ class _TeamResultsState extends State<TeamResults> {
                           color: Colors.indigo,
                           decoration: TextDecoration.underline)),
                   Text(
-                    snapshot.data!['name'],
+                    snapshot.data!['team']['teamName'],
                     style: TextStyle(
                       color: Colors.blue,
                     ),
@@ -67,7 +67,7 @@ class _TeamResultsState extends State<TeamResults> {
                                 color: Colors.indigo,
                                 decoration: TextDecoration.underline)),
                         Text(
-                          snapshot.data!['region'],
+                          snapshot.data!['team']['regionName'],
                           style: TextStyle(
                             color: Colors.blue,
                           ),
@@ -81,7 +81,7 @@ class _TeamResultsState extends State<TeamResults> {
                                 color: Colors.indigo,
                                 decoration: TextDecoration.underline)),
                         Text(
-                          snapshot.data!['rank'].toString(),
+                          snapshot.data!['team']['rank'].toString(),
                           style: TextStyle(
                             color: Colors.blue,
                           ),
@@ -95,7 +95,7 @@ class _TeamResultsState extends State<TeamResults> {
                                 color: Colors.indigo,
                                 decoration: TextDecoration.underline)),
                         Text(
-                          snapshot.data!['rankWorldwide'].toString(),
+                          snapshot.data!['team']['rankWorldwide'].toString(),
                           style: TextStyle(
                             color: Colors.blue,
                           ),
@@ -117,7 +117,7 @@ class _TeamResultsState extends State<TeamResults> {
                                 color: Colors.indigo,
                                 decoration: TextDecoration.underline)),
                         Text(
-                          snapshot.data!['gp'].toString(),
+                          snapshot.data!['team']['gp'].toString(),
                           style: TextStyle(
                             color: Colors.blue,
                           ),
@@ -131,7 +131,7 @@ class _TeamResultsState extends State<TeamResults> {
                                 color: Colors.indigo,
                                 decoration: TextDecoration.underline)),
                         Text(
-                          snapshot.data!['mmr'].toString(),
+                          snapshot.data!['team']['mmr'].toString(),
                           style: TextStyle(
                             color: Colors.blue,
                           ),
@@ -145,7 +145,7 @@ class _TeamResultsState extends State<TeamResults> {
                                 color: Colors.indigo,
                                 decoration: TextDecoration.underline)),
                         Text(
-                          snapshot.data!['w'].toString(),
+                          snapshot.data!['team']['w'].toString(),
                           style: TextStyle(
                             color: Colors.blue,
                           ),
@@ -159,7 +159,7 @@ class _TeamResultsState extends State<TeamResults> {
                                 color: Colors.indigo,
                                 decoration: TextDecoration.underline)),
                         Text(
-                          snapshot.data!['t'].toString(),
+                          snapshot.data!['team']['t'].toString(),
                           style: TextStyle(
                             color: Colors.blue,
                           ),
@@ -173,7 +173,7 @@ class _TeamResultsState extends State<TeamResults> {
                                 color: Colors.indigo,
                                 decoration: TextDecoration.underline)),
                         Text(
-                          snapshot.data!['l'].toString(),
+                          snapshot.data!['team']['l'].toString(),
                           style: TextStyle(
                             color: Colors.blue,
                           ),
@@ -225,7 +225,8 @@ class _TeamResultsState extends State<TeamResults> {
                             children: [
                               Flexible(
                                 child: Text(
-                                  snapshot.data!['bio']['bioInfo'].toString(),
+                                  snapshot.data!['team']['bio']['bioInfo']
+                                      .toString(),
                                   softWrap: true,
                                   overflow: TextOverflow.fade,
                                   style: TextStyle(fontSize: 15),

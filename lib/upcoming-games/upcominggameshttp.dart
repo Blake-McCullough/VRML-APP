@@ -49,7 +49,7 @@ Future<String> getcurrentgamesnotification() async {
   } else {
     tokencode = 'Bearer ' + token;
     final response = await _client.get(
-      Uri.parse('https://api.vrmasterleague.com/User/@MyMatches'),
+      Uri.parse('https://api.vrmasterleague.com/Users/@MyMatches'),
       headers: {
         "content-type": "application/json",
         "Authorization": tokencode,
@@ -77,11 +77,13 @@ Future<String> getcurrentgamesnotification() async {
 
           var dateFormat = DateFormat(
               "dd-MM-yyyy hh:mm aa"); // you can change the format here
-          var utcDate = dateFormat.format(DateTime.parse(data['scheduled']
-              [index]['dateScheduled'])); // pass the UTC time here
+          var utcDate = dateFormat.format(
+              DateTime.parse(data['scheduled'][index]['dateScheduledUser']));
+          print(data['scheduled'][index]
+              ['dateScheduledUser']); // pass the UTC time here
           print(utcDate);
           print('-------------');
-          var localDate = dateFormat.parse(utcDate, true).toLocal().toString();
+          var localDate = dateFormat.parse(utcDate, true).toString();
           print(localDate);
           print('-------------');
           DateTime createdDate = DateTime.parse(localDate);
@@ -92,7 +94,7 @@ Future<String> getcurrentgamesnotification() async {
           print('-------------');
 
           if (createdDate.isAfter(DateTime.now().subtract(Duration(days: 0)))) {
-            print('itslater$createdDate');
+            print('itslater');
 
             await flutterLocalNotificationsPlugin.zonedSchedule(
                 0,
@@ -108,7 +110,7 @@ Future<String> getcurrentgamesnotification() async {
                 uiLocalNotificationDateInterpretation:
                     UILocalNotificationDateInterpretation.absoluteTime);
           } else {
-            print('itsbefore$createdDate');
+            print('itsbefore');
           }
           index++;
         }

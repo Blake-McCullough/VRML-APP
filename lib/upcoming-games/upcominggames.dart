@@ -1,8 +1,5 @@
 import 'dart:convert';
 
-import 'package:VRML_APP/main.dart';
-
-import 'package:VRML_APP/search/team/teamidresult.dart';
 import 'package:VRML_APP/upcoming-games/upcominggameshttp.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

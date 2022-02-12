@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:VRML_APP/homescreen/homescreen.dart';
 import 'package:VRML_APP/leaderboard/leaderboardhttp.dart';
-import 'package:VRML_APP/main.dart';
+
 import 'package:VRML_APP/search/team/teamidresult.dart';
 import 'package:VRML_APP/profile/profile.dart';
 
@@ -41,22 +41,22 @@ class _LeaderboardResultsState extends State<LeaderboardResults> {
             var newData = json.decode(snapshot.data.toString());
 
             return ListView.builder(
-                itemCount: newData.length,
+                itemCount: newData['teams'].length,
                 itemBuilder: (BuildContext context, int index) {
                   return GestureDetector(
                       onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    TeamResults(teamID: newData[index]['id'])),
+                                builder: (context) => TeamResults(
+                                    teamID: newData['teams'][index]['id'])),
                           ),
                       child: Card(
                         child: ListTile(
                           onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    TeamResults(teamID: newData[index]['id'])),
+                                builder: (context) => TeamResults(
+                                    teamID: newData['teams'][index]['teamID'])),
                           ),
                           leading: Container(
                             width: 40,
@@ -64,23 +64,26 @@ class _LeaderboardResultsState extends State<LeaderboardResults> {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                  image: NetworkImage(
-                                      host + newData[index]['logo']),
+                                  image: NetworkImage(host +
+                                      newData['teams'][index]['teamLogo']),
                                   fit: BoxFit.fill),
                             ),
                           ),
-                          title: Text(newData[index]['rank'].toString() +
+                          title: Text(newData['teams'][index]['rank']
+                                  .toString() +
                               ") " +
-                              newData[index]['name'].toString()),
+                              newData['teams'][index]['teamName'].toString()),
                           subtitle: Text(
                             "GP: " +
-                                newData[index]['gp'].toString() +
+                                newData['teams'][index]['gp'].toString() +
+                                " MMR: " +
+                                newData['teams'][index]['mmr'].toString() +
                                 " W: " +
-                                newData[index]['w'].toString() +
+                                newData['teams'][index]['w'].toString() +
                                 " T: " +
-                                newData[index]['t'].toString() +
+                                newData['teams'][index]['t'].toString() +
                                 " L: " +
-                                newData[index]['l'].toString(),
+                                newData['teams'][index]['l'].toString(),
                           ),
                           trailing: IconButton(
                             onPressed: () {
@@ -88,7 +91,7 @@ class _LeaderboardResultsState extends State<LeaderboardResults> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => TeamResults(
-                                        teamID: newData[index]['id'])),
+                                        teamID: newData['teams'][index]['id'])),
                               );
                             },
                             icon: Icon(Icons.more_vert),

@@ -1,4 +1,3 @@
-import 'package:VRML_APP/main.dart';
 import 'package:VRML_APP/search/team/teamhttp.dart';
 
 import 'package:flutter/material.dart';
@@ -29,7 +28,7 @@ class _TeamPlayerResultsState extends State<TeamPlayerResults> {
         future: parJson,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            var itemCount = snapshot.data!['players'].length;
+            var itemCount = snapshot.data!['team']['players'].length;
             var size = MediaQuery.of(context).size;
 
             /*24 is for notification bar on Android*/
@@ -58,7 +57,8 @@ class _TeamPlayerResultsState extends State<TeamPlayerResults> {
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                   image: NetworkImage(host +
-                                      snapshot.data!['players'][index]['logo']),
+                                      snapshot.data!['team']['players'][index]
+                                          ['userLogo']),
                                   fit: BoxFit.fill),
                             ),
                           ),
@@ -69,7 +69,8 @@ class _TeamPlayerResultsState extends State<TeamPlayerResults> {
                                       fontWeight: FontWeight.bold,
                                       decoration: TextDecoration.underline)),
                               Text(
-                                snapshot.data!['players'][index]['name'],
+                                snapshot.data!['team']['players'][index]
+                                    ['playerName'],
                                 style: TextStyle(),
                               ),
                             ],
@@ -81,7 +82,8 @@ class _TeamPlayerResultsState extends State<TeamPlayerResults> {
                                       fontWeight: FontWeight.bold,
                                       decoration: TextDecoration.underline)),
                               Text(
-                                snapshot.data!['players'][index]['role'],
+                                snapshot.data!['team']['players'][index]
+                                    ['role'],
                                 style: TextStyle(),
                               ),
                             ],
@@ -93,7 +95,8 @@ class _TeamPlayerResultsState extends State<TeamPlayerResults> {
                                       fontWeight: FontWeight.bold,
                                       decoration: TextDecoration.underline)),
                               Text(
-                                snapshot.data!['players'][index]['country'],
+                                snapshot.data!['team']['players'][index]
+                                    ['country'],
                                 style: TextStyle(),
                               ),
                             ],
