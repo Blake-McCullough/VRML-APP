@@ -1,8 +1,8 @@
 
-#An app for the VRML api,
-##Not for commercial use unless given permission in writing. Must give credit if used. 
+# An app for the VRML api,
+## Not for commercial use unless given permission in writing. Must give credit if used. 
 
-###Screen Shots
+### Screen Shots
 ![Screenshot_20220213-114958_VRML_APP](https://user-images.githubusercontent.com/66660752/184292051-41971956-02bf-4ffa-bffe-28833111824c.png)
 ![Screenshot_1646655762](https://user-images.githubusercontent.com/66660752/184292062-62464ac2-cbbc-47ff-aa88-41d6647afa3d.png)
 ![Screenshot_1646655768](https://user-images.githubusercontent.com/66660752/184292064-b765a4a5-e643-469c-a93c-e8c5cec743e1.png)
